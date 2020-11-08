@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conanyu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="很简单的一套题，写个题解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vivo2020届春季校园招聘在线编程考试题解">
+<meta property="og:url" content="https://conanyu.github.io/2020/03/26/vivo-2020/index.html">
+<meta property="og:site_name" content="ConanYu">
+<meta property="og:description" content="很简单的一套题，写个题解。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-26T07:25:53.000Z">
+<meta property="article:modified_time" content="2020-03-27T06:39:19.129Z">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://conanyu.github.io/2020/03/26/vivo-2020/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>vivo2020届春季校园招聘在线编程考试题解 | ConanYu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ConanYu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://conanyu.github.io/2020/03/26/vivo-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConanYu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vivo2020届春季校园招聘在线编程考试题解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-26 15:25:53" itemprop="dateCreated datePublished" datetime="2020-03-26T15:25:53+08:00">2020-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-27 14:39:19" itemprop="dateModified" datetime="2020-03-27T14:39:19+08:00">2020-03-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/interview/" itemprop="url" rel="index"><span itemprop="name">interview</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>很简单的一套题，写个题解。</p>
+
+<a id="more"></a>
+
+
+<hr>
+<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><blockquote>
+<p>现有一个 3x3 规格的 Android 智能手机锁屏程序和两个正整数 m 和 n ，请计算出使用最少m 个键和最多 n个键可以解锁该屏幕的所有有效模式总数。<br>其中有效模式是指：</p>
+<ul>
+<li>每个模式必须连接至少m个键和最多n个键；</li>
+<li>所有的键都必须是不同的；</li>
+<li>如果在模式中连接两个连续键的行通过任何其他键，则其他键必须在模式中选择，不允许跳过非选择键（如图）；</li>
+<li>顺序相关，单键有效（这里可能跟部分手机不同）。</li>
+</ul>
+<p>输入：m,n<br>代表允许解锁的最少m个键和最多n个键<br>输出：<br>满足m和n个键数的所有有效模式的总数</p>
+</blockquote>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>很显然，解锁方式最多有$\sum\limits_{i=1}^{9}{A_9^{i}}$种，每一种方式处理的时间复杂度是$O(9)$。</p>
+<p>处理某一种方式的时候，只需要判断相邻的两个点的中间是否有点或者有点的情况下他是否已经经过了。</p>
+<p>用C++的话使用dfs即可模拟出所有情况。</p>
+<p>但是Python有一个很优秀的库itertools里面有permutations函数可以很快速地去枚举所有的方式，只可惜Python速度太慢了，直接计算会TLE，见下面的代码。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">self, m, n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> m &gt; n:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">max</span>(m, <span class="number">1</span>), <span class="built_in">min</span>(n, <span class="number">9</span>)</span><br><span class="line">    dp = [[<span class="number">-1</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">2</span>] = <span class="number">1</span></span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">6</span>] = <span class="number">3</span></span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">8</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">7</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    dp[<span class="number">2</span>][<span class="number">6</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">2</span>][<span class="number">8</span>] = <span class="number">5</span></span><br><span class="line">    dp[<span class="number">3</span>][<span class="number">5</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">5</span>][<span class="number">3</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">6</span>][<span class="number">0</span>] = <span class="number">3</span></span><br><span class="line">    dp[<span class="number">6</span>][<span class="number">2</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">6</span>][<span class="number">8</span>] = <span class="number">7</span></span><br><span class="line">    dp[<span class="number">7</span>][<span class="number">1</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">8</span>][<span class="number">0</span>] = <span class="number">4</span></span><br><span class="line">    dp[<span class="number">8</span>][<span class="number">2</span>] = <span class="number">5</span></span><br><span class="line">    dp[<span class="number">8</span>][<span class="number">6</span>] = <span class="number">7</span></span><br><span class="line">    <span class="keyword">from</span> itertools <span class="keyword">import</span> permutations</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m, n + <span class="number">1</span>):</span><br><span class="line">      <span class="keyword">for</span> per <span class="keyword">in</span> permutations(<span class="built_in">range</span>(<span class="number">9</span>), i):</span><br><span class="line">        vis = [<span class="literal">False</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>)]</span><br><span class="line">        vis[per[<span class="number">0</span>]] = <span class="literal">True</span></span><br><span class="line">        ok = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, i):</span><br><span class="line">          <span class="keyword">if</span> dp[per[k]][per[k - <span class="number">1</span>]] != <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[dp[per[k]][per[k - <span class="number">1</span>]]]:</span><br><span class="line">              ok = <span class="literal">False</span></span><br><span class="line">              <span class="keyword">break</span></span><br><span class="line">          vis[per[k]] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> ok:</span><br><span class="line">          ans += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p>$dp[i][j]$表示的是第$i$个点和第$j$个点之间的点是什么，如果没有则是-1。（懒得想变量名，随便写了个叫dp）</p>
+<p>TLE了怎么办，这么小的数据量当然是本地打表，然后弄个前缀和，显然这个题就变成了$O(1)$的时间复杂度，不可能过不了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">solution</span>(<span class="params">self, m, n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> m &gt; n:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    m, n = <span class="built_in">max</span>(m, <span class="number">1</span>), <span class="built_in">min</span>(n, <span class="number">9</span>)</span><br><span class="line">    a = [<span class="number">0</span>, <span class="number">9</span>, <span class="number">56</span>, <span class="number">320</span>, <span class="number">1624</span>, <span class="number">7152</span>, <span class="number">26016</span>, <span class="number">72912</span>, <span class="number">140704</span>, <span class="number">140704</span>]</span><br><span class="line">    b = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">      b[i] = b[i - <span class="number">1</span>] + a[i]</span><br><span class="line">    <span class="keyword">return</span> b[n] - b[m - <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p><del>其实也可以不用前缀和 习惯这样做了</del></p>
+<hr>
+<h3 id="B"><a href="#B" class="headerlink" title="B"></a>B</h3><h4 id="题面-1"><a href="#题面-1" class="headerlink" title="题面"></a>题面</h4><blockquote>
+<p>现给定任意正整数 n，请寻找并输出最小的正整数 m（m&gt;9），使得 m 的各位（个位、十位、百位 … …）之乘积等于n，若不存在则输出 -1。</p>
+</blockquote>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><p>显然这个数$n$只能由若干个2到9的积组成才有解。如果不是则返回-1。</p>
+<p>有解时，要保证$m$最小，则先要保证数位最少。</p>
+<p>所以分解因子的时候应当从大到小分解。</p>
+<p>那么假设$n=2^{q_1}\cdot 3^{q_2}\cdot 4^{q_3}\cdot … \cdot 9^{q_8}$</p>
+<p>显然$m$为$q_1$个$2$、$q_2$个$3$等等依此类推连起来即可。</p>
+<p>但这个样例估计很水，他不会爆int。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 输入一个整形数值，返回一个整形值</span></span><br><span class="line"><span class="comment">   * @param n int整型 n&gt;9</span></span><br><span class="line"><span class="comment">   * @return int整型</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">v</span><span class="params">(<span class="number">10</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">9</span>; i &gt;= <span class="number">2</span>; i--) &#123;</span><br><span class="line">      <span class="keyword">while</span>(n % i == <span class="number">0</span>) &#123;</span><br><span class="line">        v[i]++;</span><br><span class="line">        n /= i;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; v[i]; j++) &#123;</span><br><span class="line">        ret = ret * <span class="number">10</span> + i;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><h4 id="题面-2"><a href="#题面-2" class="headerlink" title="题面"></a>题面</h4><blockquote>
+<p>在vivo产线上，每位职工随着对手机加工流程认识的熟悉和经验的增加，日产量也会不断攀升。<br>假设第一天量产1台，接下来2天(即第二、三天)每天量产2件，接下来3天(即第四、五、六天)每天量产3件 … …<br>以此类推，请编程计算出第n天总共可以量产的手机数量。</p>
+</blockquote>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>本以为这第三个题会更难一点，结果这题最简单。。</p>
+<p>因为他传的参数是int范围，而且直接暴力的复杂度是$O(\sqrt{n})$。</p>
+<p>时间完全够用，实际上还可以加速。但我的想法是能过就行。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * @param n int整型 第n天</span></span><br><span class="line"><span class="comment">   * @return int整型</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">1</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n &gt;= cnt) &#123;</span><br><span class="line">      res += cnt * cnt;</span><br><span class="line">      n -= cnt;</span><br><span class="line">      cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res + n * cnt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a href="#">回到开头</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/25/lc181/" rel="prev" title="LeetCode第181场周赛题解">
+      <i class="fa fa-chevron-left"></i> LeetCode第181场周赛题解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/27/163game-2020-1/" rel="next" title="网易游戏（互娱）2020校招在线笔试-游戏研发第一批题解">
+      网易游戏（互娱）2020校招在线笔试-游戏研发第一批题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">A</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">B</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2-1"><span class="nav-number">2.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C"><span class="nav-number">3.</span> <span class="nav-text">C</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2-2"><span class="nav-number">3.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://semon0x29a.cn/" title="http:&#x2F;&#x2F;semon0x29a.cn&#x2F;" rel="noopener" target="_blank">Semon0x29a</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://caproner.github.io/" title="https:&#x2F;&#x2F;caproner.github.io&#x2F;" rel="noopener" target="_blank">Caproner</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qfstudio.net/" title="https:&#x2F;&#x2F;blog.qfstudio.net&#x2F;" rel="noopener" target="_blank">lightyears</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.dangosky.com/" title="http:&#x2F;&#x2F;blog.dangosky.com&#x2F;" rel="noopener" target="_blank">DangoSky</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cppisgood.github.io/" title="https:&#x2F;&#x2F;cppisgood.github.io&#x2F;" rel="noopener" target="_blank">cppisgood</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://9lie.github.io/" title="https:&#x2F;&#x2F;9lie.github.io&#x2F;" rel="noopener" target="_blank">9lie</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

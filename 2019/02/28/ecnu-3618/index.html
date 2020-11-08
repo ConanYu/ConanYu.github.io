@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conanyu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题目链接 题意：求在 $n\cdot n$ （包括边界）整点三角形有多少个。由于答案可能很大，对于 $10^9+7$ 取模。（$1 \leq n \leq 2 \cdot 10^6$）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECNU3618 数三角形">
+<meta property="og:url" content="https://conanyu.github.io/2019/02/28/ecnu-3618/index.html">
+<meta property="og:site_name" content="ConanYu">
+<meta property="og:description" content="题目链接 题意：求在 $n\cdot n$ （包括边界）整点三角形有多少个。由于答案可能很大，对于 $10^9+7$ 取模。（$1 \leq n \leq 2 \cdot 10^6$）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-02-28T02:48:07.000Z">
+<meta property="article:modified_time" content="2020-03-26T12:01:35.029Z">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="number theory">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://conanyu.github.io/2019/02/28/ecnu-3618/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>ECNU3618 数三角形 | ConanYu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ConanYu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://conanyu.github.io/2019/02/28/ecnu-3618/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConanYu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ECNU3618 数三角形
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-02-28 10:48:07" itemprop="dateCreated datePublished" datetime="2019-02-28T10:48:07+08:00">2019-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-26 20:01:35" itemprop="dateModified" datetime="2020-03-26T20:01:35+08:00">2020-03-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://acm.ecnu.edu.cn/problem/3618/">题目链接</a></p>
+<p>题意：求在 $n\cdot n$ （包括边界）整点三角形有多少个。由于答案可能很大，对于 $10^9+7$ 取模。（$1 \leq n \leq 2 \cdot 10^6$）</p>
+
+<a id="more"></a>
+
+
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ul>
+<li><p>莫比乌斯反演公式：<br>$F(n)=\sum\limits_{d\mid n}f(d)\Rightarrow f(n)=\sum\limits_{d\mid n}\mu(d)F(\frac{n}{d})$<br>$F(n)=\sum\limits_{n\mid d}f(d)\Rightarrow f(n)=\sum\limits_{n\mid d}\mu(\frac{d}{n})F(d)$  </p>
+</li>
+<li><p>一些预处理技巧（莫比乌斯函数的预处理等）</p>
+</li>
+<li><p>一系列的推公式技巧</p>
+</li>
+</ul>
+<h2 id="推导出原始公式"><a href="#推导出原始公式" class="headerlink" title="推导出原始公式"></a>推导出原始公式</h2><p>一看到这样的题，我最先想到的是暴力打个表再说。<br>打表的程序如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isTri</span>(<span class="params">a, b, c</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (a[<span class="number">1</span>] - b[<span class="number">1</span>]) * (c[<span class="number">0</span>] - b[<span class="number">0</span>]) != (c[<span class="number">1</span>] - b[<span class="number">1</span>]) * (a[<span class="number">0</span>] - b[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span>(<span class="params">n</span>):</span></span><br><span class="line">    v, ret = [], <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>):</span><br><span class="line">        v += [(i, j) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> tri <span class="keyword">in</span> combinations(v, <span class="number">3</span>):</span><br><span class="line">        ret += <span class="number">1</span> <span class="keyword">if</span> isTri(tri[<span class="number">0</span>], tri[<span class="number">1</span>], tri[<span class="number">2</span>]) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    print(calc(i))</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">76</span><br><span class="line">516</span><br><span class="line">2148</span><br><span class="line">6768</span><br><span class="line">17600</span><br><span class="line">40120</span><br><span class="line">82608</span><br><span class="line">157252</span><br></pre></td></tr></table></figure>
+
+<p><del>然后我就在oeis找到了他的原始公式</del><br>（我不知道是怎么推出来的）</p>
+<p>原始公式： $A(n)=\frac{n^{2}(n+1)^{2}(n+2)^{2}}{6}-2\cdot \sum\limits_{l=1}^{n}\sum\limits_{k=1}^{n}(n-k+1)(n-l+1)\gcd(k,l)$</p>
+<h2 id="简化公式"><a href="#简化公式" class="headerlink" title="简化公式"></a>简化公式</h2><p>我们可以发现前面部分是比较好求的，所以我们令 $$B(n)=\sum\limits_{l=1}^{n-1}\sum\limits_{k=1}^{n-1}(n-k)(n-l)\gcd(k,l)$$<br>那么 $$A(n)=\frac{n^{2}(n+1)^{2}(n+2)^{2}}{6}-2\cdot B(n+1)$$<br>枚举所有的$\gcd=d$的情况，那么 $$B(n)=\sum\limits_{d=1}^{n-1}d\sum\limits_{l=1}^{n-1}\sum\limits_{k=1}^{n-1}(n-k)(n-l)[\gcd(k,l)==d]$$ （$[\gcd(k,l)==d]$ 表示当gcd(k,l)==d时为1，否则为0）<br>这时令$$f(d)=\sum\limits_{l=1}^{n-1}\sum\limits_{k=1}^{n-1}(n-k)(n-l)[\gcd(k,l)==d]$$<br>$$=\sum\limits_{l=1}^{\lfloor\frac{n-1}{d}\rfloor}\sum\limits_{k=1}^{\lfloor\frac{n-1}{d}\rfloor}(n-ld)(n-kd)[\gcd(k,l)==1]$$ （假设n是个常量）  </p>
+<p>再令$$F(d)=\sum\limits_{l=1}^{n-1}\sum\limits_{k=1}^{n-1}(n-k)(n-l)[\gcd(k,l)为d的倍数]$$  </p>
+<p>所以$$F(d)=\sum\limits_{d\mid n}f(n)$$<br>易知$$F(d)=\sum\limits_{l=1}^{\lfloor\frac{n-1}{d}\rfloor}\sum\limits_{k=1}^{\lfloor\frac{n-1}{d}\rfloor}(n-ld)(n-kd)$$<br>$$=n^2\sum\limits_{l=1}^{\lfloor\frac{n-1}{d}\rfloor}\sum\limits_{k=1}^{\lfloor\frac{n-1}{d}\rfloor}1-dn\sum\limits_{l=1}^{\lfloor\frac{n-1}{d}\rfloor}\sum\limits_{k=1}^{\lfloor\frac{n-1}{d}\rfloor}(l+r)+d^2\sum\limits_{l=1}^{\lfloor\frac{n-1}{d}\rfloor}l\sum\limits_{k=1}^{\lfloor\frac{n-1}{d}\rfloor}k$$<br>$$=\lfloor\frac{n-1}{d}\rfloor^2n^2-(\lfloor\frac{n-1}{d}\rfloor^3+\lfloor\frac{n-1}{d}\rfloor^2)dn+\frac{\lfloor\frac{n-1}{d}\rfloor^2(\lfloor\frac{n-1}{d}\rfloor+1)^2}{4} d^2$$<br>由莫比乌斯反演公式得$$f(d)=\sum\limits_{d\mid m, m\lt n}\mu(\frac{m}{d})F(m)$$<br>$$=\sum\limits_{i=1}^{\lfloor\frac{n-1}{d}\rfloor}\mu(i)F(id)$$<br>则$$B(n)=\sum\limits_{d=1}^{n-1}d\sum\limits_{i=1}^{\lfloor\frac{n-1}{d}\rfloor}\mu(i)F(id)$$  </p>
+<p>在可以预处理前n个$\mu(n)$和前n个$F(n)$的情况下，复杂度为$O(n+\sum\limits_{i=1}^{n}\lfloor\frac{n}{i}\rfloor)\leq O(33333333)$在合理的复杂度范围内。</p>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>在处理$(a\cdot b\cdot …)%m$时粗心的小伙伴总会因为太复杂而出错。<br>这样写基本上就不会出错了。<br><del>虽然可能会比较慢，但一般不会卡这个常吧。</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">mod</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((x % p) + p) % p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">mmod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1l</span>l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> ...U&gt;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">mmod</span><span class="params">(<span class="keyword">const</span> T &amp; head, <span class="keyword">const</span> U &amp;... tail)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mod((head % MOD) * mmod(tail...), MOD);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用方法<code>long long res = mmod(a, b, c, d);</code>。</p>
+<h2 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">2e6</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">bool</span> isnpri[MAXN];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;pri;</span><br><span class="line"><span class="keyword">int</span> mu[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mobius</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; MAXN; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isnpri[i]) &#123;</span><br><span class="line">            pri.push_back(i);</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="keyword">int</span>(pri.size()); j++) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">int</span> cur = i * pri[j];</span><br><span class="line">            <span class="keyword">if</span> (cur &gt;= MAXN) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            isnpri[cur] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % pri[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                mu[cur] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                mu[cur] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">mod</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((x % p) + p) % p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">mmod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1l</span>l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> ...U&gt;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">mmod</span><span class="params">(<span class="keyword">const</span> T &amp; head, <span class="keyword">const</span> U &amp;... tail)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mod((head % MOD) * mmod(tail...), MOD);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> F[MAXN];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> cur = (n - <span class="number">1</span>) / i;</span><br><span class="line">        F[i] = mod(mmod(cur, cur, n, n) - mmod(cur * cur * cur + cur * cur, i, n) + mmod(cur, cur, cur + <span class="number">1</span>, cur + <span class="number">1</span>, <span class="number">250000002l</span>l, i, i), MOD);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mobius();</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sub = mmod(n, n, n + <span class="number">1</span>, n + <span class="number">1</span>, n + <span class="number">2</span>, n + <span class="number">2</span>, <span class="number">166666668l</span>l);</span><br><span class="line"></span><br><span class="line">    n++;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d &lt;= n; d++) &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tmp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n / d; j++) &#123;</span><br><span class="line">            tmp = (tmp + F[j * d] * mu[j]) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = (ans + tmp * d) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mod(sub - ans * <span class="number">2</span>, MOD) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="#">回到开头</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/number-theory/" rel="tag"># number theory</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/19/studentManagement/" rel="prev" title="MFC课程设计——学生成绩管理系统">
+      <i class="fa fa-chevron-left"></i> MFC课程设计——学生成绩管理系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/03/shu-426/" rel="next" title="SHU426 膜两下将会让你送命">
+      SHU426 膜两下将会让你送命 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E5%87%BA%E5%8E%9F%E5%A7%8B%E5%85%AC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">推导出原始公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E5%85%AC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">简化公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">4.</span> <span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E4%BB%A3%E7%A0%81"><span class="nav-number">5.</span> <span class="nav-text">最终代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://semon0x29a.cn/" title="http:&#x2F;&#x2F;semon0x29a.cn&#x2F;" rel="noopener" target="_blank">Semon0x29a</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://caproner.github.io/" title="https:&#x2F;&#x2F;caproner.github.io&#x2F;" rel="noopener" target="_blank">Caproner</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qfstudio.net/" title="https:&#x2F;&#x2F;blog.qfstudio.net&#x2F;" rel="noopener" target="_blank">lightyears</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.dangosky.com/" title="http:&#x2F;&#x2F;blog.dangosky.com&#x2F;" rel="noopener" target="_blank">DangoSky</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cppisgood.github.io/" title="https:&#x2F;&#x2F;cppisgood.github.io&#x2F;" rel="noopener" target="_blank">cppisgood</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://9lie.github.io/" title="https:&#x2F;&#x2F;9lie.github.io&#x2F;" rel="noopener" target="_blank">9lie</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

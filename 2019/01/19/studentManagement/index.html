@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conanyu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="关键词：  广州大学 MFC程序设计 学生管理系统  源码 由于本人非常地懒，不会回答大家的问题，遇到问题请百度谷歌解决吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MFC课程设计——学生成绩管理系统">
+<meta property="og:url" content="https://conanyu.github.io/2019/01/19/studentManagement/index.html">
+<meta property="og:site_name" content="ConanYu">
+<meta property="og:description" content="关键词：  广州大学 MFC程序设计 学生管理系统  源码 由于本人非常地懒，不会回答大家的问题，遇到问题请百度谷歌解决吧。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/1.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/2.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/4.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/5.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/6.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/7.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/8.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/9.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/10.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/11.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/12.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/13.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/14.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/15.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/16.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/17.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/18.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/19.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/20.png">
+<meta property="og:image" content="https://conanyu.github.io/2019/01/19/studentManagement/21.png">
+<meta property="article:published_time" content="2019-01-19T07:33:58.000Z">
+<meta property="article:modified_time" content="2020-03-26T11:59:55.307Z">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="project">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://conanyu.github.io/2019/01/19/studentManagement/1.png">
+
+<link rel="canonical" href="https://conanyu.github.io/2019/01/19/studentManagement/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>MFC课程设计——学生成绩管理系统 | ConanYu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ConanYu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://conanyu.github.io/2019/01/19/studentManagement/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConanYu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MFC课程设计——学生成绩管理系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-19 15:33:58" itemprop="dateCreated datePublished" datetime="2019-01-19T15:33:58+08:00">2019-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-26 19:59:55" itemprop="dateModified" datetime="2020-03-26T19:59:55+08:00">2020-03-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>关键词：</p>
+<ul>
+<li>广州大学</li>
+<li>MFC程序设计</li>
+<li>学生管理系统</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/ConanYu/studentManagement">源码</a></p>
+<p><del>由于本人非常地懒，不会回答大家的问题，遇到问题请百度谷歌解决吧。</del></p>
+
+<a id="more"></a>
+
+
+<hr>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>操作系统： Windows 10 家庭中文版</li>
+<li>编写软件： Visual Studio 2017</li>
+<li>预编译头： 除了原有自带的，添加了_CRT_SECURE_NO_WARNINGS。</li>
+</ul>
+<hr>
+<h2 id="课程设计题目及内容"><a href="#课程设计题目及内容" class="headerlink" title="课程设计题目及内容"></a>课程设计题目及内容</h2><ul>
+<li>设计一个学生类Student，包括数据成员：姓名、学号、二门课程(面向对象程序设计、高等数学)的成绩。</li>
+<li>创建一个管理学生的类Management，包括实现学生的数据的增加、删除、修改、按课程成绩排序、保存学生数据到文件及加载文件中的数据等功能。</li>
+<li>创建一个基于对话框的MFC应用程序，程序窗口的标题上有你姓名、学号和应用程序名称。使用（1）和（2）中的类，实现对学生信息和成绩的输入和管理。</li>
+<li>创建一个单文档的MFC应用程序，读取（3）中保存的文件中的学生成绩，分别用直方图和折线方式显示所有学生某课程的成绩分布图。  </li>
+</ul>
+<hr>
+<h2 id="程序功能模块的设计"><a href="#程序功能模块的设计" class="headerlink" title="程序功能模块的设计"></a>程序功能模块的设计</h2><h3 id="用户层面"><a href="#用户层面" class="headerlink" title="用户层面"></a>用户层面</h3><p><img src="1.png"></p>
+<h3 id="底层"><a href="#底层" class="headerlink" title="底层"></a>底层</h3><p><img src="2.png">  </p>
+<p>只要用户更新了数据，就保存数据到tmp.csv中。<br>只有用户点击了保存按钮，才会保存到data.csv中。  </p>
+<hr>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><blockquote>
+<p>- main<br>|– Manager.exe<br>|– Document.exe<br>|– data.csv<br>|– tmp.csv<br>|– README.txt</p>
+</blockquote>
+<ul>
+<li>Manager.exe和Document.exe是两个程序的入口，分别是学生管理和可视化文档。  </li>
+<li>data.csv存放数据，仅支持utf-8编码。  </li>
+<li>tmp.csv存放临时数据。</li>
+</ul>
+<hr>
+<h2 id="关键源程序"><a href="#关键源程序" class="headerlink" title="关键源程序"></a>关键源程序</h2><h3 id="Manager-对话框"><a href="#Manager-对话框" class="headerlink" title="Manager 对话框"></a>Manager 对话框</h3><h4 id="底层-base-h"><a href="#底层-base-h" class="headerlink" title="底层 (base.h)"></a>底层 (base.h)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	CString name;</span><br><span class="line">	CString number;</span><br><span class="line">	<span class="keyword">int</span> gradeOOP;</span><br><span class="line">	<span class="keyword">int</span> gradeMath;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Student()&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(CString _name, CString _number, <span class="keyword">const</span> <span class="keyword">int</span> &amp; _gradeOOP = <span class="number">0</span>, <span class="keyword">const</span> <span class="keyword">int</span> &amp; _gradeMath = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		name = _name;</span><br><span class="line">		number = _number;</span><br><span class="line">		gradeOOP = _gradeOOP;</span><br><span class="line">		gradeMath = _gradeMath;</span><br><span class="line">	&#125;</span><br><span class="line">	Student(CString _name, CString _number, <span class="keyword">const</span> <span class="keyword">int</span> &amp; _gradeOOP = <span class="number">0</span>, <span class="keyword">const</span> <span class="keyword">int</span> &amp; _gradeMath = <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;<span class="built_in">set</span>(_name, _number, _gradeOOP, _gradeMath);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">CString <span class="title">getName</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">CString <span class="title">getNumber</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> number;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">getGradeOOP</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> gradeOOP;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">getGradeMath</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> gradeMath;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">Management</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假线性表</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myVector</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	T * p;</span><br><span class="line">	<span class="keyword">unsigned</span> __sz;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	myVector()</span><br><span class="line">	&#123;</span><br><span class="line">		p = <span class="keyword">new</span> T[<span class="number">10000</span>];</span><br><span class="line">		__sz = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">const</span> T &amp; newObj)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		p[__sz] = newObj;</span><br><span class="line">		__sz++;</span><br><span class="line">	&#125;</span><br><span class="line">	T&amp; <span class="keyword">operator</span>[] (<span class="keyword">const</span> <span class="keyword">unsigned</span> &amp; idx) <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> p[idx];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">unsigned</span> <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>-&gt;__sz;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">int</span> sz = __sz - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &lt; sz; i++) &#123;</span><br><span class="line">			p[i] = p[i + <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		__sz--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件为utf8编码，用csv的逗号分隔符的格式读入</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Management</span> &#123;</span></span><br><span class="line">	myVector&lt;Student&gt; v;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Management() &#123;</span><br><span class="line">		v = myVector&lt;Student&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 文件 =&gt; 内存</span></span><br><span class="line">	Management(<span class="keyword">const</span> <span class="keyword">wchar_t</span> * fileString) &#123;</span><br><span class="line">		v = myVector&lt;Student&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// utf8</span></span><br><span class="line">		<span class="function">locale <span class="title">utf8</span><span class="params">(locale(<span class="string">&quot;&quot;</span>), <span class="keyword">new</span> codecvt_utf8&lt;<span class="keyword">wchar_t</span>, <span class="number">0x10ffff</span>, little_endian&gt;)</span></span>;</span><br><span class="line">		<span class="function">wifstream <span class="title">ifs</span><span class="params">(fileString)</span></span>;</span><br><span class="line">		ifs.imbue(utf8);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//不存在文件</span></span><br><span class="line">		<span class="keyword">if</span> (!ifs.is_open()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// curString 即 buffer</span></span><br><span class="line">		<span class="keyword">wchar_t</span> * curString = <span class="keyword">new</span> <span class="keyword">wchar_t</span>[<span class="number">2048</span>];</span><br><span class="line">		<span class="keyword">int</span> * idx = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">		<span class="keyword">while</span> (!ifs.eof()) &#123;</span><br><span class="line">			</span><br><span class="line">			ifs.getline(curString, <span class="number">2048</span>);</span><br><span class="line">			<span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">const</span> <span class="keyword">int</span> len = wcslen(curString);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (curString[i] == <span class="string">L&#x27;,&#x27;</span>) &#123;</span><br><span class="line">					curString[i] = <span class="string">L&#x27;\0&#x27;</span>;</span><br><span class="line">					idx[p++] = i + <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (len &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			CString name, number;</span><br><span class="line">			<span class="keyword">int</span> gradeOOP = <span class="number">0</span>, gradeMath = <span class="number">0</span>;</span><br><span class="line">			name = curString;</span><br><span class="line">			number = curString + idx[<span class="number">0</span>];</span><br><span class="line">			swscanf(curString + idx[<span class="number">1</span>], <span class="string">L&quot;%d&quot;</span>, &amp;gradeOOP);</span><br><span class="line">			swscanf(curString + idx[<span class="number">2</span>], <span class="string">L&quot;%d&quot;</span>, &amp;gradeMath);</span><br><span class="line">			add(Student(name, number, gradeOOP, gradeMath));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">delete</span>[] idx;</span><br><span class="line">		<span class="keyword">delete</span>[] curString;</span><br><span class="line">		ifs.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">const</span> Student &amp; obj)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		CString s = obj.number;</span><br><span class="line">		<span class="keyword">if</span> (find(s) == <span class="number">-1</span>) &#123;</span><br><span class="line">			v.push(obj);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">throw</span> bad_exception();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 遍历寻找 找到返回下标 找不到返回-1</span></span><br><span class="line">	<span class="function"><span class="keyword">unsigned</span> <span class="title">find</span><span class="params">(CString s)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">int</span> len = v.size();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (s == v[i].number)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp0</span><span class="params">(<span class="keyword">const</span> Student &amp; a, <span class="keyword">const</span> Student &amp; b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a.number &lt; b.number;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp1</span><span class="params">(<span class="keyword">const</span> Student &amp; a, <span class="keyword">const</span> Student &amp; b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a.name &lt; b.name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp2</span><span class="params">(<span class="keyword">const</span> Student &amp; a, <span class="keyword">const</span> Student &amp; b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a.gradeOOP &lt; b.gradeOOP;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp3</span><span class="params">(<span class="keyword">const</span> Student &amp; a, <span class="keyword">const</span> Student &amp; b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a.gradeMath &lt; b.gradeMath;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">sort</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> index = <span class="number">0</span>, <span class="keyword">const</span> <span class="keyword">bool</span> reverse = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">int</span> n = v.size();</span><br><span class="line">		<span class="keyword">bool</span>(*p)(<span class="keyword">const</span> Student &amp;, <span class="keyword">const</span> Student &amp;) = cmp0;</span><br><span class="line">		<span class="keyword">switch</span> (index) &#123;</span><br><span class="line">		<span class="comment">//number</span></span><br><span class="line">		<span class="keyword">case</span> <span class="number">0</span>: p = cmp0; <span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//name</span></span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>: p = cmp1; <span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//gradeOOP</span></span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>: p = cmp2; <span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//gradeMath</span></span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>: p = cmp3; <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (p(v[j], v[i]) ^ reverse) &#123;</span><br><span class="line">					Student tmp = v[i];</span><br><span class="line">					v[i] = v[j];</span><br><span class="line">					v[j] = tmp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> index * <span class="number">2</span> + (<span class="keyword">int</span>)reverse;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 内存 =&gt; 文件</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">(<span class="keyword">const</span> <span class="keyword">wchar_t</span> * fileString)</span> </span>&#123;</span><br><span class="line">		<span class="function">locale <span class="title">utf8</span><span class="params">(locale(<span class="string">&quot;&quot;</span>), <span class="keyword">new</span> codecvt_utf8&lt;<span class="keyword">wchar_t</span>, <span class="number">0x10ffff</span>, little_endian&gt;)</span></span>;</span><br><span class="line">		<span class="function">wofstream <span class="title">ofs</span><span class="params">(fileString)</span></span>;</span><br><span class="line">		ofs.imbue(utf8);</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">int</span> len = v.size();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">const</span> <span class="keyword">wchar_t</span> * name = v[i].name;</span><br><span class="line">			<span class="keyword">const</span> <span class="keyword">wchar_t</span> * number = v[i].number;</span><br><span class="line">			ofs &lt;&lt; name &lt;&lt; <span class="string">L&#x27;,&#x27;</span> &lt;&lt; number &lt;&lt; <span class="string">L&#x27;,&#x27;</span> &lt;&lt; v[i].gradeOOP &lt;&lt; <span class="string">L&#x27;,&#x27;</span> &lt;&lt; v[i].gradeMath &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		ofs.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		v.erase(n);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">CManagerDlg</span>;</span></span><br><span class="line">	<span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">CChgDlg</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主窗口-CManagerDlg"><a href="#主窗口-CManagerDlg" class="headerlink" title="主窗口 (CManagerDlg)"></a>主窗口 (CManagerDlg)</h4><h5 id="m-list初始化"><a href="#m-list初始化" class="headerlink" title="m_list初始化"></a>m_list初始化</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// m_list初始化</span></span><br><span class="line"><span class="keyword">const</span> CString STR[] = &#123; <span class="string">L&quot;姓名&quot;</span>, <span class="string">L&quot;学号&quot;</span>, <span class="string">L&quot;面向对象程序设计成绩&quot;</span>, <span class="string">L&quot;高等数学成绩&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> LENTH[] = &#123;<span class="number">100</span>, <span class="number">142</span>, <span class="number">145</span>, <span class="number">145</span>&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">	m_list.InsertColumn(i, STR[i], <span class="number">0</span>, LENTH[i]);</span><br><span class="line">&#125;</span><br><span class="line">m_list.SetExtendedStyle(m_list.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);</span><br></pre></td></tr></table></figure>
+
+<h5 id="获取数据的路径以及数据的读取"><a href="#获取数据的路径以及数据的读取" class="headerlink" title="获取数据的路径以及数据的读取"></a>获取数据的路径以及数据的读取</h5><p>放在初始化的代码中</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get source path</span></span><br><span class="line">CString path = AfxGetApp()-&gt;m_pszHelpFilePath;</span><br><span class="line"><span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len = path.GetLength();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (path[i] == <span class="string">&#x27;\\&#x27;</span>) &#123;</span><br><span class="line">		idx = i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">filePath = path.Left(idx + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// update from source path</span></span><br><span class="line">manager = Management(filePath + <span class="string">L&quot;data.csv&quot;</span>);</span><br><span class="line">status = manager.sort();</span><br><span class="line">update(manager);</span><br></pre></td></tr></table></figure>
+
+<h5 id="禁止拖动表头"><a href="#禁止拖动表头" class="headerlink" title="禁止拖动表头"></a>禁止拖动表头</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CManagerDlg::OnBegintrackList1</span><span class="params">(NMHDR *pNMHDR, LRESULT *pResult)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LPNMHEADER phdr = <span class="keyword">reinterpret_cast</span>&lt;LPNMHEADER&gt;(pNMHDR);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	*pResult = TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//add</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CManagerDlg::OnBnClickedButton1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	CAddDlg dlg;</span><br><span class="line">	dlg.DoModal();</span><br><span class="line">	update(app-&gt;manager);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//chg</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CManagerDlg::OnBnClickedButton2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	POSITION line = m_list.GetFirstSelectedItemPosition();</span><br><span class="line">	<span class="keyword">if</span> (line == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		AfxMessageBox(<span class="string">L&quot;你没有选中任何人！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		app-&gt;chg_pos = m_list.GetNextSelectedItem(line);</span><br><span class="line">		CChgDlg dlg;</span><br><span class="line">		dlg.DoModal();</span><br><span class="line">		update(app-&gt;manager);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//del</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CManagerDlg::OnBnClickedButton3</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	POSITION line = m_list.GetFirstSelectedItemPosition();</span><br><span class="line">	CString str;</span><br><span class="line">	<span class="keyword">if</span> (line == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		AfxMessageBox(<span class="string">L&quot;你没有选中任何人！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		Management &amp; manager = app-&gt;manager;</span><br><span class="line">		<span class="keyword">int</span> nItem = m_list.GetNextSelectedItem(line);</span><br><span class="line">		manager.erase(nItem);</span><br><span class="line">		update(manager);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="保存数据"><a href="#保存数据" class="headerlink" title="保存数据"></a>保存数据</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//save</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CManagerDlg::OnBnClickedButton4</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	app-&gt;manager.output(filePath + <span class="string">L&quot;data.csv&quot;</span>);</span><br><span class="line">	AfxMessageBox(<span class="string">L&quot;保存成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="点击表头进行排序"><a href="#点击表头进行排序" class="headerlink" title="点击表头进行排序"></a>点击表头进行排序</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sort</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CManagerDlg::OnColumnclickList1</span><span class="params">(NMHDR *pNMHDR, LRESULT *pResult)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LPNMLISTVIEW pNMLV = <span class="keyword">reinterpret_cast</span>&lt;LPNMLISTVIEW&gt;(pNMHDR);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	<span class="keyword">int</span> idx = pNMLV-&gt;iSubItem; <span class="comment">// get the clicked column</span></span><br><span class="line">	idx = (idx == <span class="number">0</span> || idx == <span class="number">1</span>) ? (<span class="number">1</span> - idx) : idx;</span><br><span class="line">	<span class="keyword">bool</span> rev = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">switch</span> (idx) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">0</span>:rev = status == <span class="number">0</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:rev = status == <span class="number">2</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:rev = status == <span class="number">4</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:rev = status == <span class="number">6</span>; <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Management &amp; manager = app-&gt;manager;</span><br><span class="line">	status = manager.sort(idx, rev);</span><br><span class="line">	update(manager);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	*pResult = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加学生对话框-CAddDlg"><a href="#添加学生对话框-CAddDlg" class="headerlink" title="添加学生对话框 (CAddDlg)"></a>添加学生对话框 (CAddDlg)</h4><h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">CAddDlg::OnInitDialog</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	CDialogEx::OnInitDialog();</span><br><span class="line">	</span><br><span class="line">	app = (CManagerApp *)AfxGetApp();</span><br><span class="line"></span><br><span class="line">	m_edit_name.SetLimitText(<span class="number">20</span>);</span><br><span class="line">	m_edit_number.SetLimitText(<span class="number">20</span>);</span><br><span class="line">	m_edit_oop.SetLimitText(<span class="number">20</span>);</span><br><span class="line">	m_edit_math.SetLimitText(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">	m_edit_name.SetWindowTextW(<span class="string">L&quot;张三&quot;</span>);</span><br><span class="line">	m_edit_number.SetWindowTextW(<span class="string">L&quot;1806300001&quot;</span>);</span><br><span class="line">	m_edit_oop.SetWindowTextW(<span class="string">L&quot;0&quot;</span>);</span><br><span class="line">	m_edit_math.SetWindowTextW(<span class="string">L&quot;0&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="点击确认时代码"><a href="#点击确认时代码" class="headerlink" title="点击确认时代码"></a>点击确认时代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CAddDlg::OnBnClickedOk</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	m_edit_name.GetWindowTextW(app-&gt;add_name);</span><br><span class="line">	m_edit_number.GetWindowTextW(app-&gt;add_number);</span><br><span class="line">	m_edit_oop.GetWindowTextW(app-&gt;add_oop);</span><br><span class="line">	m_edit_math.GetWindowTextW(app-&gt;add_math);</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		app-&gt;manager.add(Student(app-&gt;add_name, app-&gt;add_number, _wtoi(app-&gt;add_oop), _wtoi(app-&gt;add_math)));</span><br><span class="line">		CDialogEx::OnOK();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (bad_exception) &#123;</span><br><span class="line">		AfxMessageBox(<span class="string">L&quot;数据中已含有相同的学号&quot;</span>);</span><br><span class="line">		CDialogEx::OnInitDialog();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改学生对话框-CChgDlg"><a href="#修改学生对话框-CChgDlg" class="headerlink" title="修改学生对话框 (CChgDlg)"></a>修改学生对话框 (CChgDlg)</h4><h5 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">CChgDlg::OnInitDialog</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	CDialogEx::OnInitDialog();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> idx = app-&gt;chg_pos;</span><br><span class="line">	Management &amp; manager = app-&gt;manager;</span><br><span class="line">	m_edit_name.SetWindowTextW(manager.v[idx].getName());</span><br><span class="line">	m_edit_number.SetWindowTextW(manager.v[idx].getNumber());</span><br><span class="line">	CString str;</span><br><span class="line">	str.Format(<span class="string">L&quot;%d&quot;</span>, manager.v[idx].getGradeOOP());</span><br><span class="line">	m_edit_oop.SetWindowTextW(str);</span><br><span class="line">	str.Format(<span class="string">L&quot;%d&quot;</span>, manager.v[idx].getGradeMath());</span><br><span class="line">	m_edit_math.SetWindowTextW(str);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="点击确认时代码-1"><a href="#点击确认时代码-1" class="headerlink" title="点击确认时代码"></a>点击确认时代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChgDlg::OnBnClickedOk</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	Management &amp; manager = app-&gt;manager;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> idx = app-&gt;chg_pos;</span><br><span class="line">	CString chg_name;</span><br><span class="line">	CString chg_number = manager.v[idx].getNumber();</span><br><span class="line">	CString chg_oop;</span><br><span class="line">	CString chg_math;</span><br><span class="line">	m_edit_name.GetWindowTextW(chg_name);</span><br><span class="line">	m_edit_oop.GetWindowTextW(chg_oop);</span><br><span class="line">	m_edit_math.GetWindowTextW(chg_math);</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> oop = _wtoi(chg_oop), math = _wtoi(chg_math);</span><br><span class="line">	manager.v[idx] = Student(chg_name, chg_number, oop, math);</span><br><span class="line">	CDialogEx::OnOK();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Manager-h-中的“全局”变量"><a href="#Manager-h-中的“全局”变量" class="headerlink" title="Manager.h 中的“全局”变量"></a>Manager.h 中的“全局”变量</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Management manager;</span><br><span class="line">CString add_name;</span><br><span class="line">CString add_number;</span><br><span class="line">CString add_oop;</span><br><span class="line">CString add_math;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Document-单文档"><a href="#Document-单文档" class="headerlink" title="Document 单文档"></a>Document 单文档</h3><h4 id="底层-bash-h"><a href="#底层-bash-h" class="headerlink" title="底层 (bash.h)"></a>底层 (bash.h)</h4><p>与Manager中大致相同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;codecvt&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> MAXIMUM = <span class="number">10000</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">list</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> * OOP;</span><br><span class="line">	<span class="keyword">int</span> * MAT;</span><br><span class="line">	<span class="built_in">list</span>()&#123;</span><br><span class="line">		OOP = <span class="keyword">new</span> <span class="keyword">int</span>[MAXIMUM];</span><br><span class="line">		MAT = <span class="keyword">new</span> <span class="keyword">int</span>[MAXIMUM];</span><br><span class="line">		<span class="built_in">memset</span>(OOP, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * MAXIMUM);</span><br><span class="line">		<span class="built_in">memset</span>(MAT, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * MAXIMUM);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">Management</span>;</span></span><br><span class="line">	<span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">CChildView</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件为utf8编码，用csv的逗号分隔符的格式读入</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Management</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> sz;</span><br><span class="line">	<span class="built_in">list</span> data;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Management() &#123;</span><br><span class="line">		sz = <span class="number">0</span>;</span><br><span class="line">		data = <span class="built_in">list</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 文件 =&gt; 内存</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">const</span> <span class="keyword">wchar_t</span> * fileString)</span> </span>&#123;</span><br><span class="line">		sz = <span class="number">0</span>;</span><br><span class="line">		data = <span class="built_in">list</span>();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// utf8</span></span><br><span class="line">		<span class="function">locale <span class="title">utf8</span><span class="params">(locale(<span class="string">&quot;&quot;</span>), <span class="keyword">new</span> codecvt_utf8&lt;<span class="keyword">wchar_t</span>, <span class="number">0x10ffff</span>, little_endian&gt;)</span></span>;</span><br><span class="line">		<span class="function">wifstream <span class="title">ifs</span><span class="params">(fileString)</span></span>;</span><br><span class="line">		ifs.imbue(utf8);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//不存在文件</span></span><br><span class="line">		<span class="keyword">if</span> (!ifs.is_open()) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// curString 即 buffer</span></span><br><span class="line">		<span class="keyword">wchar_t</span> * curString = <span class="keyword">new</span> <span class="keyword">wchar_t</span>[<span class="number">2048</span>];</span><br><span class="line">		<span class="keyword">int</span> * idx = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">		<span class="keyword">while</span> (!ifs.eof()) &#123;</span><br><span class="line">			ifs.getline(curString, <span class="number">2048</span>);</span><br><span class="line">			<span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">const</span> <span class="keyword">int</span> len = wcslen(curString);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (curString[i] == <span class="string">L&#x27;,&#x27;</span>) &#123;</span><br><span class="line">					curString[i] = <span class="string">L&#x27;\0&#x27;</span>;</span><br><span class="line">					idx[p++] = i + <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (len &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> gradeOOP = <span class="number">0</span>, gradeMath = <span class="number">0</span>;</span><br><span class="line">			swscanf(curString + idx[<span class="number">1</span>], <span class="string">L&quot;%d&quot;</span>, &amp;gradeOOP);</span><br><span class="line">			swscanf(curString + idx[<span class="number">2</span>], <span class="string">L&quot;%d&quot;</span>, &amp;gradeMath);</span><br><span class="line">			data.OOP[sz] = gradeOOP;</span><br><span class="line">			data.MAT[sz] = gradeMath;</span><br><span class="line">			sz++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">delete</span>[] idx;</span><br><span class="line">		<span class="keyword">delete</span>[] curString;</span><br><span class="line">		ifs.close();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">CChildView</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="视图类头文件-ChildView-h"><a href="#视图类头文件-ChildView-h" class="headerlink" title="视图类头文件 (ChildView.h)"></a>视图类头文件 (ChildView.h)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// ChildView.h: CChildView 类的接口</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;base.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CChildView 窗口</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CChildView</span> :</span> <span class="keyword">public</span> CWnd</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">// 构造</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	CChildView();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 特性</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重写</span></span><br><span class="line">	<span class="keyword">protected</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> BOOL <span class="title">PreCreateWindow</span><span class="params">(CREATESTRUCT&amp; cs)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">virtual</span> ~CChildView();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 生成的消息映射函数</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="function">afx_msg <span class="keyword">void</span> <span class="title">OnPaint</span><span class="params">()</span></span>;</span><br><span class="line">	DECLARE_MESSAGE_MAP()</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">afx_msg <span class="keyword">int</span> <span class="title">OnCreate</span><span class="params">(LPCREATESTRUCT lpCreateStruct)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	CButton OOPA;</span><br><span class="line">	CButton OOPB;</span><br><span class="line">	CButton MATA;</span><br><span class="line">	CButton MATB;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PRINTOOPA</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PRINTOOPB</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PRINTMATA</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PRINTMATB</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">histogram</span><span class="params">(CDC *, <span class="keyword">const</span> <span class="keyword">int</span> *, <span class="keyword">int</span>)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">listChart</span><span class="params">(CDC *, <span class="keyword">const</span> <span class="keyword">int</span> *, <span class="keyword">int</span>)</span></span>;</span><br><span class="line">	Management manager;</span><br><span class="line">	CString filePath;</span><br><span class="line">	<span class="keyword">int</span> a[MAXIMUM];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="视图类源文件-ChildView-cpp"><a href="#视图类源文件-ChildView-cpp" class="headerlink" title="视图类源文件 (ChildView.cpp)"></a>视图类源文件 (ChildView.cpp)</h4><h5 id="消息注册"><a href="#消息注册" class="headerlink" title="消息注册"></a>消息注册</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BEGIN_MESSAGE_MAP(CChildView, CWnd)</span><br><span class="line">	ON_WM_PAINT()</span><br><span class="line">	ON_WM_CREATE()</span><br><span class="line">	ON_COMMAND(<span class="number">1</span>, PRINTOOPA)</span><br><span class="line">	ON_COMMAND(<span class="number">2</span>, PRINTOOPB)</span><br><span class="line">	ON_COMMAND(<span class="number">3</span>, PRINTMATA)</span><br><span class="line">	ON_COMMAND(<span class="number">4</span>, PRINTMATB)</span><br><span class="line">END_MESSAGE_MAP()</span><br></pre></td></tr></table></figure>
+
+<h5 id="创建文档时代码（初始化）"><a href="#创建文档时代码（初始化）" class="headerlink" title="创建文档时代码（初始化）"></a>创建文档时代码（初始化）</h5><p>创建按钮</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create</span></span><br><span class="line">OOPA.Create(<span class="string">L&quot;OOP成绩直方图&quot;</span>, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, CRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">130</span>, <span class="number">40</span>), <span class="keyword">this</span>, <span class="number">1</span>);</span><br><span class="line">OOPB.Create(<span class="string">L&quot;OOP成绩折线图&quot;</span>, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, CRect(<span class="number">140</span>, <span class="number">10</span>, <span class="number">260</span>, <span class="number">40</span>), <span class="keyword">this</span>, <span class="number">2</span>);</span><br><span class="line">MATA.Create(<span class="string">L&quot;数学成绩直方图&quot;</span>, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, CRect(<span class="number">10</span>, <span class="number">50</span>, <span class="number">130</span>, <span class="number">80</span>), <span class="keyword">this</span>, <span class="number">3</span>);</span><br><span class="line">MATB.Create(<span class="string">L&quot;数学成绩折线图&quot;</span>, WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, CRect(<span class="number">140</span>, <span class="number">50</span>, <span class="number">260</span>, <span class="number">80</span>), <span class="keyword">this</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<p>获取数据并存储数据</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get source path</span></span><br><span class="line">CString path = AfxGetApp()-&gt;m_pszHelpFilePath;</span><br><span class="line"><span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> len = path.GetLength();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (path[i] == <span class="string">&#x27;\\&#x27;</span>) &#123;</span><br><span class="line">		idx = i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">filePath = path.Left(idx + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// update from source path</span></span><br><span class="line">manager = Management();</span><br><span class="line">manager.<span class="built_in">set</span>(filePath + <span class="string">L&quot;data.csv&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="点击按钮时的操作"><a href="#点击按钮时的操作" class="headerlink" title="点击按钮时的操作"></a>点击按钮时的操作</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChildView::PRINTOOPA</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	<span class="built_in">memcpy</span>(a, manager.data.OOP, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * MAXIMUM);</span><br><span class="line">	InvalidateRect(<span class="literal">NULL</span>);</span><br><span class="line">	UpdateWindow();</span><br><span class="line">	histogram(GetDC(), a, manager.sz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChildView::PRINTOOPB</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	<span class="built_in">memcpy</span>(a, manager.data.OOP, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * MAXIMUM);</span><br><span class="line">	InvalidateRect(<span class="literal">NULL</span>);</span><br><span class="line">	UpdateWindow();</span><br><span class="line">	listChart(GetDC(), a, manager.sz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChildView::PRINTMATA</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	<span class="built_in">memcpy</span>(a, manager.data.MAT, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * MAXIMUM);</span><br><span class="line">	InvalidateRect(<span class="literal">NULL</span>);</span><br><span class="line">	UpdateWindow();</span><br><span class="line">	histogram(GetDC(), a, manager.sz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChildView::PRINTMATB</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	<span class="built_in">memcpy</span>(a, manager.data.MAT, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * MAXIMUM);</span><br><span class="line">	InvalidateRect(<span class="literal">NULL</span>);</span><br><span class="line">	UpdateWindow();</span><br><span class="line">	listChart(GetDC(), a, manager.sz);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="绘制直方图"><a href="#绘制直方图" class="headerlink" title="绘制直方图"></a>绘制直方图</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChildView::histogram</span><span class="params">(CDC * pDC, <span class="keyword">const</span> <span class="keyword">int</span> *score, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 数据处理</span></span><br><span class="line">	<span class="keyword">int</span> data[<span class="number">5</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> cur = score[i] / <span class="number">10</span> - <span class="number">5</span>;</span><br><span class="line">		<span class="keyword">if</span> (cur &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			cur = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (cur &gt; <span class="number">4</span>) &#123;</span><br><span class="line">			cur = <span class="number">4</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		data[cur]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mx = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">		mx = mx &gt; data[i] ? mx : data[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// print</span></span><br><span class="line">	CRect rc;</span><br><span class="line">	GetClientRect(rc);</span><br><span class="line">	rc.DeflateRect(<span class="number">280</span>, <span class="number">40</span>);</span><br><span class="line">	CBrush brush1(HS_FDIAGONAL, RGB(0, 0, 192)), brush2(HS_BDIAGONAL, RGB(0, 0, 192));</span><br><span class="line">	<span class="function">CPen <span class="title">pen</span><span class="params">(PS_INSIDEFRAME, <span class="number">2</span>, RGB(<span class="number">0</span>, <span class="number">0</span>, <span class="number">192</span>))</span></span>;</span><br><span class="line">	<span class="function">CBrush * <span class="title">oldBrush</span><span class="params">(pDC-&gt;SelectObject(&amp;brush1))</span></span>;</span><br><span class="line">	<span class="function">CPen * <span class="title">oldPen</span><span class="params">(pDC-&gt;SelectObject(&amp;pen))</span></span>;</span><br><span class="line">	<span class="function">CRect <span class="title">rcSeg</span><span class="params">(rc)</span></span>;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">int</span> width = rc.Width() / <span class="number">5</span>;</span><br><span class="line">	rcSeg.right = rcSeg.left + width;</span><br><span class="line">	<span class="keyword">const</span> CString str[] = &#123; <span class="string">L&quot;小于60&quot;</span>, <span class="string">L&quot;60到69&quot;</span>, <span class="string">L&quot;70到79&quot;</span>, <span class="string">L&quot;80到89&quot;</span>, <span class="string">L&quot;大于等于90&quot;</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">		pDC-&gt;SelectObject(i &amp; <span class="number">1</span> ? &amp;brush2 : &amp;brush1);</span><br><span class="line">		<span class="keyword">if</span> (mx != <span class="number">0</span>) &#123;</span><br><span class="line">			rcSeg.top = rcSeg.bottom - data[i] * (rc.Height() / mx) - <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pDC-&gt;Rectangle(rcSeg);</span><br><span class="line">		<span class="keyword">if</span> (data[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			CString tmp;</span><br><span class="line">			tmp.Format(<span class="string">L&quot;%d&quot;</span>, data[i]);</span><br><span class="line">			pDC-&gt;DrawText(tmp, rcSeg, DT_CENTER | DT_VCENTER | DT_SINGLELINE);</span><br><span class="line">		&#125;</span><br><span class="line">		CRect rcStr = rcSeg;</span><br><span class="line">		rcStr.top = rcStr.bottom + <span class="number">2</span>;</span><br><span class="line">		rcStr.bottom += <span class="number">20</span>;</span><br><span class="line">		pDC-&gt;DrawText(str[i], rcStr, DT_CENTER | DT_VCENTER | DT_SINGLELINE);</span><br><span class="line">		rcSeg.OffsetRect(width, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	pDC-&gt;SelectObject(oldBrush);</span><br><span class="line">	pDC-&gt;SelectObject(oldPen);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="绘制折线图"><a href="#绘制折线图" class="headerlink" title="绘制折线图"></a>绘制折线图</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CChildView::listChart</span><span class="params">(CDC* pDC, <span class="keyword">const</span> <span class="keyword">int</span>* score, <span class="keyword">int</span> n)</span><span class="comment">//折线图</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加实现代码.</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 数据处理</span></span><br><span class="line">	<span class="keyword">int</span> data[<span class="number">5</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> cur = score[i] / <span class="number">10</span> - <span class="number">5</span>;</span><br><span class="line">		<span class="keyword">if</span> (cur &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			cur = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (cur &gt; <span class="number">4</span>) &#123;</span><br><span class="line">			cur = <span class="number">4</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		data[cur]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mx = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">		mx = mx &gt; data[i] ? mx : data[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// print</span></span><br><span class="line">	CDC* pControlDC = pDC;</span><br><span class="line">	pControlDC-&gt;SelectStockObject(BLACK_BRUSH);</span><br><span class="line">	CString tmp;</span><br><span class="line">	<span class="keyword">const</span> CString str[] = &#123; <span class="string">L&quot;&lt;60&quot;</span>, <span class="string">L&quot;60-70&quot;</span>, <span class="string">L&quot;70-80&quot;</span>, <span class="string">L&quot;80-90&quot;</span>, <span class="string">L&quot;&gt;=90&quot;</span> &#125;;</span><br><span class="line">	pControlDC-&gt;MoveTo(<span class="number">280</span>, <span class="number">40</span>);</span><br><span class="line">	pControlDC-&gt;LineTo(<span class="number">280</span>, <span class="number">380</span>);</span><br><span class="line">	pControlDC-&gt;MoveTo(<span class="number">280</span>, <span class="number">380</span>);</span><br><span class="line">	pControlDC-&gt;LineTo(<span class="number">1050</span>, <span class="number">380</span>);</span><br><span class="line">	<span class="keyword">if</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">const</span> <span class="keyword">int</span> x = i * <span class="number">140</span> + <span class="number">350</span>, y = <span class="number">380</span> - (<span class="number">380</span> * data[i] / n);</span><br><span class="line">			<span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">				pControlDC-&gt;MoveTo(x, y);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				pControlDC-&gt;LineTo(x, y);</span><br><span class="line">			&#125;</span><br><span class="line">			tmp.Format(<span class="string">L&quot;%d人&quot;</span>, data[i]);</span><br><span class="line">			pControlDC-&gt;TextOut(i * <span class="number">140</span> + <span class="number">350</span>, <span class="number">380</span> - (<span class="number">380</span> * data[i] / n) - <span class="number">20</span>, tmp);</span><br><span class="line">			pControlDC-&gt;TextOut(i * <span class="number">140</span> + <span class="number">350</span>, <span class="number">390</span>, str[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="运行时效果图"><a href="#运行时效果图" class="headerlink" title="运行时效果图"></a>运行时效果图</h2><p>刚打开时默认是按照学号进行排序的。（字典序排序）<br><img src="4.png">  </p>
+<p>点击表头可以进行排序。例如此时我点击姓名的表头。<br><img src="5.png"><br>此时是按照内部的utf8编码进行字典序排序。<br>再点一下就变成倒序。<br><img src="6.png">  </p>
+<p>点击面向对象程序设计成绩的表头，则会按照面向对象程序设计成绩进行排序。<br><img src="7.png"><br>而高等数学成绩也是一样。  </p>
+<p>点击添加按钮，弹出一个对话框。默认有一些参数。<br><img src="8.png">  </p>
+<p>添加的数据学号不能重复，否则会弹出一个MessageBox表示不能添加。<br><img src="9.png">  </p>
+<p>添加成功后会在最后加入一行数据。<br><img src="10.png"><br>红色框即刚才添加的数据。</p>
+<p>修改学生或删除学生时时需要选中一名学生，否则会出现以下情况。<br><img src="11.png"></p>
+<p>假如此时我要删除学生“李四”，需要选中“李四”，再点击删除。<br><img src="12.png"><br><img src="13.png"></p>
+<p>如果要修改学生“王五”，则要选中“王五”，然后点击修改。<br><img src="14.png"></p>
+<p>可以修改该学生的姓名、OOP成绩与数学成绩，但不可以修改学号（edit控件锁定）。保证学号的唯一性。这里我们修改“王五”的数学成绩为74。<br><img src="15.png"><br>点击确定，这时“王五”的数学成绩改为了74。  </p>
+<p>点击保存，弹出一个MessageBox，表示保存成功。<br><img src="16.png"></p>
+<p>关闭学生信息管理系统。打开Document.exe。<br><img src="17.png"></p>
+<p>点击按钮就可以直方图和折线图的查看了。<br><img src="18.png"><br><img src="19.png"><br><img src="20.png"><br><img src="21.png"></p>
+<hr>
+<h2 id="实验结果分析"><a href="#实验结果分析" class="headerlink" title="实验结果分析"></a>实验结果分析</h2><ul>
+<li>功能：完全做出预定功能，例如学生添加、修改、删除等操作以及单文档显示都可以做到。  </li>
+<li>用户体验：从用户体验出发而设计窗口，用户一打开应用程序，就自动读取了数据，用户相当于数据库的操作者，但并非使用数据库的语言，而是可视化的窗口，而且可视化的体验会相当好。  </li>
+<li>实现意义：可以可视化地处理数据，并且考虑到了学号是不应该改变的，而且许多操作可以基于学号不可相同性，这就代表了一个学号最多对应一位学生，利用学生进行映射。而学生的姓名是有可能相同的，利用姓名进行操作是不可取的。</li>
+</ul>
+<hr>
+<h2 id="实验体会"><a href="#实验体会" class="headerlink" title="实验体会"></a>实验体会</h2><h3 id="写底层时的体会"><a href="#写底层时的体会" class="headerlink" title="写底层时的体会"></a>写底层时的体会</h3><ul>
+<li>一个Management类中有很多个Student类对象，它们不是继承的关系，而是包含的关系。</li>
+<li>在编写这两个类之前，首先最好把这两个类的功能、接口想清楚，再进行编写，这样编写的代码bug少，而且编写代码的时间也会更短。而不是盲目的写。（像是Management类的成员函数中又定义了一个Mangement类对象的操作是不能理解的）</li>
+<li>编写文件输入和文件输出的时候，需要注意编码问题，若是不使用wchar_t，或者不统一编码，则很可能会导致乱码的情况发生。同时文件的格式要统一。比如我是使用的是csv文件的逗号分隔符文件，编写简单，但安全性欠佳。若是正常非实验使用的应用程序，需要封装成其他安全的文件格式，并且需要进行加密（哪怕是最简单的base64加密）。</li>
+</ul>
+<h3 id="写对话框时的体会"><a href="#写对话框时的体会" class="headerlink" title="写对话框时的体会"></a>写对话框时的体会</h3><ul>
+<li>预先理清楚架构，想好需要处理哪些功能，创建好对话框，组织好对话框，再编写代码，这样会更清楚地知道该如何编写。</li>
+<li>每一个对话框用的不是同样的数据，就是说每两个对话框都是独立的。但如果需要进行对话框之间的变量交互，可以通过一个对话框们都能访问到的一个app对象，即AfxGetApp()的返回值。将需要共享的变量放在Manager.h中，传值的时候就可以通过这个app对象实现。</li>
+<li>MFC的功能非常多，如果你想实现一个功能，但又不知道怎么用什么接口去实现这个功能，这个时候最好是寻找官方文档，查询这些功能的接口，或者利用搜索引擎寻求帮助。</li>
+<li>需要实现的功能非常多。耐心是非常重要的，一步一步地来，最后总能做到想要的功能和达到想要的效果。</li>
+<li>Visual Studio 可以帮你生成许多代码，如果你需要生成一个对话框，只需要动几下鼠标和键盘就可以实现的。有许多东西都可以自动生成，而无需自己跑到在头文件中添加某个函数，然后又再cpp文件中又再写一次。如果全部代码都是自己写的，那么你学的其实只是普通VC++而不是MFC。</li>
+</ul>
+<h3 id="写单文档时的体会"><a href="#写单文档时的体会" class="headerlink" title="写单文档时的体会"></a>写单文档时的体会</h3><ul>
+<li>和对话框一样，许多代码是自动生成的，完全没要必要自己写。自动生成可以加快编写代码的时间。</li>
+<li>单文档应该和对话框共享一个data.csv文件，这样在manager类中产生的数据可以直接被单文档所享用。</li>
+<li>写单文档时也需要有耐心，从官方文档中查询功能的接口，并慢慢实现，一步一步构建代码。</li>
+</ul>
+<hr>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>不可以对学生进行分开管理。</li>
+<li>代码重构将非常复杂。</li>
+<li>…</li>
+</ul>
+<p><a href="#">回到开头</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/project/" rel="tag"># project</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/11/25/CodeforcesRound-524/" rel="prev" title="CodeforcesRound#524">
+      <i class="fa fa-chevron-left"></i> CodeforcesRound#524
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/02/28/ecnu-3618/" rel="next" title="ECNU3618 数三角形">
+      ECNU3618 数三角形 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E9%A2%98%E7%9B%AE%E5%8F%8A%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">课程设计题目及内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">程序功能模块的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%B1%82%E9%9D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">用户层面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%95%E5%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">底层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%BA%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">关键源程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Manager-%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">4.1.</span> <span class="nav-text">Manager 对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E5%B1%82-base-h"><span class="nav-number">4.1.1.</span> <span class="nav-text">底层 (base.h)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E7%AA%97%E5%8F%A3-CManagerDlg"><span class="nav-number">4.1.2.</span> <span class="nav-text">主窗口 (CManagerDlg)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#m-list%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">m_list初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%BB%E5%8F%96"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">获取数据的路径以及数据的读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A6%81%E6%AD%A2%E6%8B%96%E5%8A%A8%E8%A1%A8%E5%A4%B4"><span class="nav-number">4.1.2.3.</span> <span class="nav-text">禁止拖动表头</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">4.1.2.4.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">4.1.2.5.</span> <span class="nav-text">修改数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-number">4.1.2.6.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="nav-number">4.1.2.7.</span> <span class="nav-text">保存数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E8%A1%A8%E5%A4%B4%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F"><span class="nav-number">4.1.2.8.</span> <span class="nav-text">点击表头进行排序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AD%A6%E7%94%9F%E5%AF%B9%E8%AF%9D%E6%A1%86-CAddDlg"><span class="nav-number">4.1.3.</span> <span class="nav-text">添加学生对话框 (CAddDlg)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E7%A1%AE%E8%AE%A4%E6%97%B6%E4%BB%A3%E7%A0%81"><span class="nav-number">4.1.3.2.</span> <span class="nav-text">点击确认时代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AD%A6%E7%94%9F%E5%AF%B9%E8%AF%9D%E6%A1%86-CChgDlg"><span class="nav-number">4.1.4.</span> <span class="nav-text">修改学生对话框 (CChgDlg)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E7%A1%AE%E8%AE%A4%E6%97%B6%E4%BB%A3%E7%A0%81-1"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">点击确认时代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Manager-h-%E4%B8%AD%E7%9A%84%E2%80%9C%E5%85%A8%E5%B1%80%E2%80%9D%E5%8F%98%E9%87%8F"><span class="nav-number">4.1.5.</span> <span class="nav-text">Manager.h 中的“全局”变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Document-%E5%8D%95%E6%96%87%E6%A1%A3"><span class="nav-number">4.2.</span> <span class="nav-text">Document 单文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E5%B1%82-bash-h"><span class="nav-number">4.2.1.</span> <span class="nav-text">底层 (bash.h)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E7%B1%BB%E5%A4%B4%E6%96%87%E4%BB%B6-ChildView-h"><span class="nav-number">4.2.2.</span> <span class="nav-text">视图类头文件 (ChildView.h)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E7%B1%BB%E6%BA%90%E6%96%87%E4%BB%B6-ChildView-cpp"><span class="nav-number">4.2.3.</span> <span class="nav-text">视图类源文件 (ChildView.cpp)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E6%B3%A8%E5%86%8C"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">消息注册</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E6%A1%A3%E6%97%B6%E4%BB%A3%E7%A0%81%EF%BC%88%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%89"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">创建文档时代码（初始化）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%97%B6%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">4.2.3.3.</span> <span class="nav-text">点击按钮时的操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">4.2.3.4.</span> <span class="nav-text">绘制直方图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="nav-number">4.2.3.5.</span> <span class="nav-text">绘制折线图</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">运行时效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-number">6.</span> <span class="nav-text">实验结果分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BD%93%E4%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">实验体会</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%BA%95%E5%B1%82%E6%97%B6%E7%9A%84%E4%BD%93%E4%BC%9A"><span class="nav-number">7.1.</span> <span class="nav-text">写底层时的体会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%97%B6%E7%9A%84%E4%BD%93%E4%BC%9A"><span class="nav-number">7.2.</span> <span class="nav-text">写对话框时的体会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%8D%95%E6%96%87%E6%A1%A3%E6%97%B6%E7%9A%84%E4%BD%93%E4%BC%9A"><span class="nav-number">7.3.</span> <span class="nav-text">写单文档时的体会</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">8.</span> <span class="nav-text">缺点</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://semon0x29a.cn/" title="http:&#x2F;&#x2F;semon0x29a.cn&#x2F;" rel="noopener" target="_blank">Semon0x29a</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://caproner.github.io/" title="https:&#x2F;&#x2F;caproner.github.io&#x2F;" rel="noopener" target="_blank">Caproner</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qfstudio.net/" title="https:&#x2F;&#x2F;blog.qfstudio.net&#x2F;" rel="noopener" target="_blank">lightyears</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.dangosky.com/" title="http:&#x2F;&#x2F;blog.dangosky.com&#x2F;" rel="noopener" target="_blank">DangoSky</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cppisgood.github.io/" title="https:&#x2F;&#x2F;cppisgood.github.io&#x2F;" rel="noopener" target="_blank">cppisgood</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://9lie.github.io/" title="https:&#x2F;&#x2F;9lie.github.io&#x2F;" rel="noopener" target="_blank">9lie</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

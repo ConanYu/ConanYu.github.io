@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conanyu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【每日一题】月月查华华的手机题解">
+<meta property="og:url" content="https://conanyu.github.io/2020/04/05/nowcoder-23053/index.html">
+<meta property="og:site_name" content="ConanYu">
+<meta property="og:description" content="题目链接">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-05T15:06:05.000Z">
+<meta property="article:modified_time" content="2020-04-05T15:14:29.813Z">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://conanyu.github.io/2020/04/05/nowcoder-23053/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>【每日一题】月月查华华的手机题解 | ConanYu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ConanYu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://conanyu.github.io/2020/04/05/nowcoder-23053/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConanYu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【每日一题】月月查华华的手机题解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-05 23:06:05 / Modified: 23:14:29" itemprop="dateCreated datePublished" datetime="2020-04-05T23:06:05+08:00">2020-04-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/problem/23053">题目链接</a></p>
+
+<a id="more"></a>
+
+
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>月月和华华一起去吃饭了。期间华华有事出去了一会儿，没有带手机。月月出于人类最单纯的好奇心，打开了华华的手机。哇，她看到了一片的QQ推荐好友，似乎华华还没有浏览过。月月顿时醋意大发，出于对好朋友的关心，为了避免华华浪费太多时间和其他网友聊天，她要删掉一些推荐好友。但是为了不让华华发现，产生猜疑，破坏了他们的友情，月月决定只删华华有可能搭讪的推荐好友。<br>月月熟知华华搭讪的规则。华华想与某个小姐姐搭讪，当且仅当小姐姐的昵称是他的昵称的子序列。为了方便，华华和小姐姐的昵称只由小写字母构成。为了更加方便，保证小姐姐的昵称长度不会比华华的长。<br>现在月月要快速的判断出哪些推荐好友要删掉，因为华华快回来了，时间紧迫，月月有点手忙脚乱，所以你赶紧写个程序帮帮她吧！</p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>如果这个题是子串而不是子序列的话那就是ac自动机裸题了。</p>
+<p>如果是子序列的话就不需要构造自动机了。有一种叫双指针的算法，那么在这里面就可以套用成(n+1)指针法。</p>
+<p>一开始所有的小姐姐昵称字符串的指针都放在最头。然后当华华昵称字符串的指针往后移动一格，倘若小姐姐昵称字符串的指针指向的是同一个字符，那么这些指针也跟着往后移动一格。</p>
+<p>当小姐姐昵称字符串的指针指向’\0’这个字符时，就可以说这个字符串是华华昵称字符串的子序列了。</p>
+<p>所以我们需要快速地找到当前指针指向的某个字符的字符串有哪些，可以对于每一个字符，都存有一个队列表示有哪些指针指向这个字符。这样总的复杂度就不会很高。</p>
+<p>时间复杂度$O(|A|+\sum\limits_{i=1}^{n} |B_i|)$</p>
+<p>但是很神奇的是，跑的比标程的$O(26\cdot|A|+\sum\limits_{i=1}^{n} |B_i|)$要慢。<del>可能是我假了吧。</del></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios::sync_with_stdio(<span class="literal">false</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>), <span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="built_in">string</span> s; <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">  <span class="keyword">int</span> n; <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">str</span><span class="params">(n)</span></span>;</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; <span class="title">ok</span><span class="params">(n, <span class="literal">false</span>)</span></span>; <span class="comment">// 记录某个字符串是否可行</span></span><br><span class="line">  <span class="built_in">queue</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; q[<span class="number">26</span>]; <span class="comment">// 存当前指向的是字符c的所有指针</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; str[i];</span><br><span class="line">    q[str[i][<span class="number">0</span>] - <span class="string">&#x27;a&#x27;</span>].push(&#123;i, <span class="number">0</span>&#125;); <span class="comment">// 将指针记录下来</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">int</span>(s.size()); i++) &#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; tq; <span class="comment">// 临时队列 防止连续相同字符导致错误</span></span><br><span class="line">    <span class="keyword">while</span>(!q[s[i] - <span class="string">&#x27;a&#x27;</span>].empty()) &#123;</span><br><span class="line">      <span class="comment">// A代表第A个字符串，B代表是第B个字符</span></span><br><span class="line">      <span class="keyword">int</span> A, B; tie(A, B) = q[s[i] - <span class="string">&#x27;a&#x27;</span>].front();</span><br><span class="line">      q[s[i] - <span class="string">&#x27;a&#x27;</span>].pop();</span><br><span class="line">      <span class="keyword">if</span>(str[A][B + <span class="number">1</span>] == <span class="string">&#x27;\0&#x27;</span>) ok[A] = <span class="literal">true</span>; <span class="comment">// 这个字符串是可行的</span></span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span>(str[A][B + <span class="number">1</span>] == s[i]) &#123;</span><br><span class="line">        tq.push(&#123;A, B + <span class="number">1</span>&#125;); <span class="comment">// 放入临时队列中</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        q[str[A][B + <span class="number">1</span>] - <span class="string">&#x27;a&#x27;</span>].push(&#123;A, B + <span class="number">1</span>&#125;); <span class="comment">// 直接放入队列中</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    q[s[i] - <span class="string">&#x27;a&#x27;</span>] = tq; <span class="comment">// 将临时数组转移</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (ok[i] ? <span class="string">&quot;Yes\n&quot;</span> : <span class="string">&quot;No\n&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="#">回到开头</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/05/newcoder-22598/" rel="prev" title="【每日一题】Rinne Loves Edges题解">
+      <i class="fa fa-chevron-left"></i> 【每日一题】Rinne Loves Edges题解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/08/newcoder-13249/" rel="next" title="【每日一题】黑白树题解">
+      【每日一题】黑白树题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://semon0x29a.cn/" title="http:&#x2F;&#x2F;semon0x29a.cn&#x2F;" rel="noopener" target="_blank">Semon0x29a</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://caproner.github.io/" title="https:&#x2F;&#x2F;caproner.github.io&#x2F;" rel="noopener" target="_blank">Caproner</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qfstudio.net/" title="https:&#x2F;&#x2F;blog.qfstudio.net&#x2F;" rel="noopener" target="_blank">lightyears</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.dangosky.com/" title="http:&#x2F;&#x2F;blog.dangosky.com&#x2F;" rel="noopener" target="_blank">DangoSky</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cppisgood.github.io/" title="https:&#x2F;&#x2F;cppisgood.github.io&#x2F;" rel="noopener" target="_blank">cppisgood</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://9lie.github.io/" title="https:&#x2F;&#x2F;9lie.github.io&#x2F;" rel="noopener" target="_blank">9lie</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

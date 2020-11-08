@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conanyu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客算法周周练3 题解">
+<meta property="og:url" content="https://conanyu.github.io/2020/04/22/nowcoder-c5338/index.html">
+<meta property="og:site_name" content="ConanYu">
+<meta property="og:description" content="题目链接">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://conanyu.github.io/2020/04/22/nowcoder-c5338/graph-xiaoyuzuoditie.png">
+<meta property="article:published_time" content="2020-04-22T07:05:27.000Z">
+<meta property="article:modified_time" content="2020-04-23T04:41:56.449Z">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://conanyu.github.io/2020/04/22/nowcoder-c5338/graph-xiaoyuzuoditie.png">
+
+<link rel="canonical" href="https://conanyu.github.io/2020/04/22/nowcoder-c5338/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>牛客算法周周练3 题解 | ConanYu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ConanYu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://conanyu.github.io/2020/04/22/nowcoder-c5338/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConanYu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          牛客算法周周练3 题解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-22 15:05:27" itemprop="dateCreated datePublished" datetime="2020-04-22T15:05:27+08:00">2020-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-23 12:41:56" itemprop="dateModified" datetime="2020-04-23T12:41:56+08:00">2020-04-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/5338">题目链接</a></p>
+
+<a id="more"></a>
+
+
+<h3 id="A-Jelly"><a href="#A-Jelly" class="headerlink" title="A - Jelly"></a>A - Jelly</h3><h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>非常裸的三维bfs。</p>
+<p>仅仅只是从经典的四连通变成了六连通然后跑个最短路就可以了。</p>
+<p>一开始想用dfs搞，然后发现可能走的不是最短路。于是乖乖地去写bfs去了。</p>
+<p>时间复杂度$O(n^3)$</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> a[<span class="number">101</span>][<span class="number">101</span>][<span class="number">101</span>];</span><br><span class="line"><span class="keyword">int</span> dis[<span class="number">101</span>][<span class="number">101</span>][<span class="number">101</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> fx[<span class="number">6</span>][<span class="number">3</span>] = &#123;&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios::sync_with_stdio(<span class="literal">false</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>), <span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">int</span> n; <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  <span class="built_in">memset</span>(dis, <span class="number">0xff</span>, <span class="keyword">sizeof</span> dis);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">      <span class="built_in">cin</span> &gt;&gt; a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">queue</span>&lt;tuple&lt;<span class="keyword">int</span>, <span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; q;</span><br><span class="line">  q.push(make_tuple(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">  dis[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">    <span class="keyword">int</span> x, y, z; tie(x, y, z) = q.front();</span><br><span class="line">    q.pop();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="keyword">int</span> nx = x + fx[i][<span class="number">0</span>], ny = y + fx[i][<span class="number">1</span>], nz = z + fx[i][<span class="number">2</span>];</span><br><span class="line">      <span class="keyword">if</span>(nx &lt; <span class="number">0</span> || nx &gt;= n || ny &lt; <span class="number">0</span> || ny &gt;= n || nz &lt; <span class="number">0</span> || nz &gt;= n) <span class="keyword">continue</span>;</span><br><span class="line">      <span class="keyword">if</span>(dis[nx][ny][nz] == <span class="number">-1</span> &amp;&amp; a[nx][ny][nz] == <span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">        dis[nx][ny][nz] = dis[x][y][z] + <span class="number">1</span>;</span><br><span class="line">        q.push(make_tuple(nx, ny, nz));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; dis[n - <span class="number">1</span>][n - <span class="number">1</span>][n - <span class="number">1</span>] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="B-「木」迷雾森林"><a href="#B-「木」迷雾森林" class="headerlink" title="B - 「木」迷雾森林"></a>B - 「木」迷雾森林</h3><h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>一个非常经典的简单动态规划。即</p>
+<p>$$<br>dp[i][j]=(dp[i-1][j]+dp[i][j-1])\cdot (1-a[i][j])<br>$$</p>
+<p>$dp[i][j]$表示走到第$i$行第$j$列个格子有多少种不同的方案。</p>
+<p>不过这题是从左下角移动到右下角，那么只需要先读入最后一行然后倒数第二行最后再读入第一行即可变成想要的样子。</p>
+<p>他说需要快读于是写了个快读不知道是不是真的要。</p>
+<p>时间复杂度$O(n\cdot m)$</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">3005</span>][<span class="number">3005</span>];</span><br><span class="line"><span class="keyword">bool</span> a[<span class="number">3005</span>][<span class="number">3005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">char</span> c = getchar();</span><br><span class="line">  <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c)) c = getchar();</span><br><span class="line">  <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">    ret = ret * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    c = getchar();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = read(), m = read();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      a[i][j] = read();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dp[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(!a[i][j]) dp[i][j] = (dp[i][j] + dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>]) % <span class="number">2333</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; dp[n][m] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="C-小雨坐地铁"><a href="#C-小雨坐地铁" class="headerlink" title="C - 小雨坐地铁"></a>C - 小雨坐地铁</h3><h4 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h4><p>这五个题当中最难的题也是最有有意思的题。非常像网络流问题里面需要自己建图的问题。这个题很显然是转换成最短路问题用dijkstra来求解。</p>
+<p>首先我们知道把每一个车站都当成一个点是不好做的。因为在同一个车站实际上有不同的状态，比如说在地铁x号线和在地铁y号线的同一个车站的状态是不一样的。然后根据这种做法，总共就有$\sum\limits_{i=1}^{m}c_i$个点。</p>
+<p>但是仅仅这些点，对于换乘操作需要每两条线路建立一条边，可能需要建$O(n\cdot m^2)$条边，这样肯定是不行的。</p>
+<p>解决的方法就是对于每一个车站再建立一个点作为中转点，即不在任何线路的车站的点。那么换乘的时候，花费$0$从地铁上下来，再花费$a_i$进入到地铁$i$号线。</p>
+<p>对于同一个地铁线路的车站，编号为$i$，只需要相邻车站建立一条双向边花费$b_i$即可。</p>
+<p>对于点的标号而言，对于每一个车站都需要一个中转点，那么中转点的编号就是车站的编号会更好处理，那么结果就是从$s$到$t$的最短路。对于地铁线路中的点而言，采用动态开点的方式即可。这样总共的点为$n+\sum\limits_{i=1}^{m}c_i$，根据建图方式单向边不会超过$4\cdot(n+\sum\limits_{i=1}^{m}c_i)$条。</p>
+<p>然后跑一个dijkstra就能得出结果了。</p>
+<p>对于这个超级简单的样例而言就会把图建成这样<del>（不太会画而画出了bug）</del></p>
+<p><img src="graph-xiaoyuzuoditie.png"></p>
+<p>时间复杂度$O(n+\sum\limits_{i=1}^{m}c_i)$</p>
+<h4 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">101010</span>, M = <span class="number">101010</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> v, w, nxt;</span><br><span class="line">&#125; G[M &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> h[N], tot, dis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">  G[tot] = &#123;v, w, h[u]&#125;; h[u] = tot++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios::sync_with_stdio(<span class="literal">false</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>), <span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="built_in">memset</span>(h, <span class="number">0xff</span>, <span class="keyword">sizeof</span> h);</span><br><span class="line">  <span class="built_in">memset</span>(dis, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dis);</span><br><span class="line">  <span class="keyword">int</span> n, m, s, t; <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; s &gt;&gt; t;</span><br><span class="line">  dis[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> cp = n;</span><br><span class="line">  addedge(<span class="number">0</span>, s, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> a, b, c, lst; <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; c; j++) &#123;</span><br><span class="line">      <span class="keyword">int</span> d; <span class="built_in">cin</span> &gt;&gt; d; ++cp;</span><br><span class="line">      addedge(d, cp, a);</span><br><span class="line">      addedge(cp, d, <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">if</span>(j != <span class="number">0</span>) &#123;</span><br><span class="line">        addedge(lst, cp, b);</span><br><span class="line">        addedge(cp, lst, b);</span><br><span class="line">      &#125;</span><br><span class="line">      lst = cp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line">  <span class="built_in">priority_queue</span>&lt;pii, <span class="built_in">vector</span>&lt;pii&gt;, greater&lt;pii&gt;&gt; q;</span><br><span class="line">  q.push(&#123;<span class="number">0</span>, <span class="number">0</span>&#125;);</span><br><span class="line">  <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> u = q.top().second;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> d = q.top().first;</span><br><span class="line">    q.pop();</span><br><span class="line">    <span class="keyword">if</span>(d &gt; dis[u]) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">if</span>(t == u) <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = h[u]; ~i; i = G[i].nxt) &#123;</span><br><span class="line">      <span class="keyword">const</span> <span class="keyword">int</span> v = G[i].v, w = G[i].w;</span><br><span class="line">      <span class="keyword">if</span>(d + w &lt; dis[v]) &#123;</span><br><span class="line">        dis[v] = d + w;</span><br><span class="line">        q.push(&#123;dis[v], v&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(dis[t] == <span class="number">0x3f3f3f3f</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;-1\n&quot;</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; dis[t] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="D-表达式求值"><a href="#D-表达式求值" class="headerlink" title="D - 表达式求值"></a>D - 表达式求值</h3><h4 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h4><p>这道题可以用更简单的方式来做，但是我就是要强行搞复杂。</p>
+<p>我是用中缀表达式转换了后缀表达式之后然后计算的。从中缀表达式转换成后缀表达式的过程：</p>
+<ul>
+<li>先准备一个数组或者队列存放结果（这个数组除了可以存数字还可以存运算符），以及一个用于临时存放运算符的栈。</li>
+<li>从左遍历字符串，如果是数字无条件放入结果数组中。</li>
+<li>如果是左括号，则无条件放入栈中。</li>
+<li>如果是右括号，则一直将栈顶中运算符取出放入队列中，直至遇到左括号，左括号不用存。</li>
+<li>如果是其他符号，重复下列操作直至不满足条件：若栈不为空且栈顶运算符优先级比当前符号小或者等于将栈顶运算符取出放入队列中。然后将当前运算符放入栈中。（左括号优先级要最低，否则就这个操作左括号就进结果里面了）</li>
+</ul>
+<p>然后后缀表达式变成结果的方式就很简单了。用一个栈来存放临时的数。从队列中拿到的是数的话就直接放进栈中，如果是运算符，则从栈中拿出两个数做运算符的操作然后放回栈中。同时要注意操作符顺序，原来在中缀表达式中右边的数是在栈顶。</p>
+<p>本题经过转换之后就做完了。<del>（要是不搞这么复杂早做完了）</del></p>
+<p>时间复杂度$O(n)$</p>
+<h4 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> rpn &#123;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> rpn_type;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> what;</span><br><span class="line">    rpn_type val;</span><br><span class="line">    node(<span class="keyword">int</span> _what = <span class="number">0</span>, rpn_type _val = <span class="number">0</span>) : what(_what), val(_val) &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function">rpn_type <span class="title">calc</span><span class="params">(<span class="keyword">int</span> what, <span class="keyword">const</span> rpn_type &amp;a, <span class="keyword">const</span> rpn_type &amp;b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(what == <span class="number">1</span>) <span class="keyword">return</span> (a + b) % <span class="number">10000</span>;</span><br><span class="line">    <span class="keyword">if</span>(what == <span class="number">2</span>) <span class="keyword">return</span> a - b;</span><br><span class="line">    <span class="keyword">if</span>(what == <span class="number">3</span>) <span class="keyword">return</span> a * b % <span class="number">10000</span>;</span><br><span class="line">    <span class="keyword">if</span>(what == <span class="number">4</span>) <span class="keyword">return</span> a / b;</span><br><span class="line">    assert(<span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span> LeftBucket = <span class="number">-114514</span>, RightBucket = <span class="number">-1919810</span>;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">toWhat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(c) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;(&#x27;</span>: <span class="keyword">return</span> LeftBucket;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;)&#x27;</span>: <span class="keyword">return</span> RightBucket;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>: <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>: <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;*&#x27;</span>: <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;/&#x27;</span>: <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    assert(<span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">rpn_type <span class="title">solve</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> n = str.size();</span><br><span class="line">    <span class="built_in">queue</span>&lt;node&gt; Queue;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; Stack;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">isdigit</span>(str[i])) &#123;</span><br><span class="line">        rpn_type cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = i;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">isdigit</span>(str[j])) &#123;</span><br><span class="line">          cur = cur * <span class="number">10</span> + str[j] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">          j++;</span><br><span class="line">        &#125;</span><br><span class="line">        i = j - <span class="number">1</span>;</span><br><span class="line">        Queue.push(node(<span class="number">0</span>, cur));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> cur = toWhat(str[i]);</span><br><span class="line">        <span class="keyword">if</span>(cur == LeftBucket) &#123;</span><br><span class="line">          Stack.push(cur);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(cur == RightBucket) &#123;</span><br><span class="line">          <span class="keyword">while</span>(Stack.top() != LeftBucket) &#123;</span><br><span class="line">            Queue.push(node(Stack.top()));</span><br><span class="line">            Stack.pop();</span><br><span class="line">          &#125;</span><br><span class="line">          Stack.pop();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">while</span>(!Stack.empty() &amp;&amp; Stack.top() &gt;= cur) &#123;</span><br><span class="line">            Queue.push(node(Stack.top()));</span><br><span class="line">            Stack.pop();</span><br><span class="line">          &#125;</span><br><span class="line">          Stack.push(cur);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!Stack.empty()) &#123;</span><br><span class="line">      Queue.push(node(Stack.top()));</span><br><span class="line">      Stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">stack</span>&lt;rpn_type&gt; forCalc;</span><br><span class="line">    <span class="keyword">while</span>(!Queue.empty()) &#123;</span><br><span class="line">      <span class="keyword">const</span> node cur = Queue.front();</span><br><span class="line">      Queue.pop();</span><br><span class="line">      <span class="keyword">if</span>(cur.what) &#123;</span><br><span class="line">        <span class="keyword">const</span> rpn_type b = forCalc.top(); forCalc.pop();</span><br><span class="line">        <span class="keyword">const</span> rpn_type a = forCalc.top(); forCalc.pop();</span><br><span class="line">        forCalc.push(calc(cur.what, a, b));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        forCalc.push(cur.val);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> forCalc.top();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios::sync_with_stdio(<span class="literal">false</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="built_in">string</span> str; <span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; rpn::solve(str) % <span class="number">10000</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="E-Sunscreen"><a href="#E-Sunscreen" class="headerlink" title="E - Sunscreen"></a>E - Sunscreen</h3><p>一道奶牛题，先翻译一下。</p>
+<p>题意：有$n$头奶牛，每一头奶牛只能接受区间$[minSPF_i, maxSPF_i]$的SPF rating。然后现在有$m$种东西，每一种东西的SPF rating是$SPF_i$，而这种东西有$cover_i$个。每一个东西只能用于一个奶牛，问最多能让多少头奶牛能够接受。</p>
+<h4 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h4><p>贪心的思想，这个东西给任何奶牛用的贡献都是1，所以需要尽可能多地制造贡献，让需求最苛刻的奶牛先用上即可。</p>
+<p>那么将$n$头奶牛对于$minSPF_i$进行排序，然后将这$m$种东西也进行排序。</p>
+<p>用一个优先队列来存$minSPF_i$已经满足条件了的$maxSPF_i$，最苛刻的奶牛即$maxSPF_i$小的奶牛。</p>
+<p>遍历排序后的$m$种东西，对于所有$minSPF_i \le SPF_i$的奶牛的$maxSPF_i$加入优先队列中，然后对于所有在优先队列中$maxSPF_i &lt; SPF_i$的退出优先队列。此时在优先队列中的都是满足条件的，那么只要将$maxSPF_i$小的先满足即可完成。</p>
+<p>时间复杂度$O(n\log(n)+m\log(m))$</p>
+<h4 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios::sync_with_stdio(<span class="literal">false</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>), <span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">int</span> n, m; <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">  vector&lt;pair&lt;int, int&gt;&gt; cow(n), bot(m);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; cow[i].first &gt;&gt; cow[i].second;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; bot[i].first &gt;&gt; bot[i].second;</span><br><span class="line">  &#125;</span><br><span class="line">  sort(cow.begin(), cow.end());</span><br><span class="line">  sort(bot.begin(), bot.end());</span><br><span class="line">  <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">priority_queue</span>&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, greater&lt;<span class="keyword">int</span>&gt;&gt; q;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">    <span class="keyword">while</span>(j &lt; n &amp;&amp; cow[j].first &lt;= bot[i].first) &#123;</span><br><span class="line">      q.push(cow[j].second);</span><br><span class="line">      j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty() &amp;&amp; q.top() &lt; bot[i].first) q.pop();</span><br><span class="line">    <span class="keyword">while</span>(!q.empty() &amp;&amp; bot[i].second) &#123;</span><br><span class="line">      q.pop();</span><br><span class="line">      ans++;</span><br><span class="line">      bot[i].second--;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="#">回到开头</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/08/newcoder-13249/" rel="prev" title="【每日一题】黑白树题解">
+      <i class="fa fa-chevron-left"></i> 【每日一题】黑白树题解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/23/nowcoder-23049/" rel="next" title="【每日一题】华华给月月准备礼物 题解">
+      【每日一题】华华给月月准备礼物 题解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Jelly"><span class="nav-number">1.</span> <span class="nav-text">A - Jelly</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">1.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-number">1.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-%E3%80%8C%E6%9C%A8%E3%80%8D%E8%BF%B7%E9%9B%BE%E6%A3%AE%E6%9E%97"><span class="nav-number">2.</span> <span class="nav-text">B - 「木」迷雾森林</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.1.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E5%B0%8F%E9%9B%A8%E5%9D%90%E5%9C%B0%E9%93%81"><span class="nav-number">4.</span> <span class="nav-text">C - 小雨坐地铁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-2"><span class="nav-number">4.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-2"><span class="nav-number">4.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">D - 表达式求值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-3"><span class="nav-number">5.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-3"><span class="nav-number">5.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Sunscreen"><span class="nav-number">6.</span> <span class="nav-text">E - Sunscreen</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-4"><span class="nav-number">6.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-4"><span class="nav-number">6.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://semon0x29a.cn/" title="http:&#x2F;&#x2F;semon0x29a.cn&#x2F;" rel="noopener" target="_blank">Semon0x29a</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://caproner.github.io/" title="https:&#x2F;&#x2F;caproner.github.io&#x2F;" rel="noopener" target="_blank">Caproner</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qfstudio.net/" title="https:&#x2F;&#x2F;blog.qfstudio.net&#x2F;" rel="noopener" target="_blank">lightyears</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.dangosky.com/" title="http:&#x2F;&#x2F;blog.dangosky.com&#x2F;" rel="noopener" target="_blank">DangoSky</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cppisgood.github.io/" title="https:&#x2F;&#x2F;cppisgood.github.io&#x2F;" rel="noopener" target="_blank">cppisgood</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://9lie.github.io/" title="https:&#x2F;&#x2F;9lie.github.io&#x2F;" rel="noopener" target="_blank">9lie</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

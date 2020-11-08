@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"conanyu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="莫比乌斯反演通常用于解决求和内含$\gcd$的问题，通常是多个求和公式嵌套而成并且需要在线性的复杂度（甚至需要低于线性时间复杂度）内解决该问题。该博文就是来谈谈对莫比乌斯反演的理解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈对莫比乌斯反演的理解">
+<meta property="og:url" content="https://conanyu.github.io/2019/04/29/mobius/index.html">
+<meta property="og:site_name" content="ConanYu">
+<meta property="og:description" content="莫比乌斯反演通常用于解决求和内含$\gcd$的问题，通常是多个求和公式嵌套而成并且需要在线性的复杂度（甚至需要低于线性时间复杂度）内解决该问题。该博文就是来谈谈对莫比乌斯反演的理解。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-04-29T14:30:54.000Z">
+<meta property="article:modified_time" content="2020-03-25T09:44:17.203Z">
+<meta property="article:tag" content="number theory">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://conanyu.github.io/2019/04/29/mobius/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>浅谈对莫比乌斯反演的理解 | ConanYu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ConanYu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://conanyu.github.io/2019/04/29/mobius/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ConanYu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅谈对莫比乌斯反演的理解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-29 22:30:54" itemprop="dateCreated datePublished" datetime="2019-04-29T22:30:54+08:00">2019-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-25 17:44:17" itemprop="dateModified" datetime="2020-03-25T17:44:17+08:00">2020-03-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>莫比乌斯反演通常用于解决求和内含$\gcd$的问题，通常是多个求和公式嵌套而成并且需要在线性的复杂度（甚至需要低于线性时间复杂度）内解决该问题。该博文就是来谈谈对莫比乌斯反演的理解。</p>
+<a id="more"></a>
+
+<h2 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h2><h3 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%BB%98%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0">莫比乌斯函数</a></h3><p>莫比乌斯函数是指以下的函数：<br>$$\mu(n)=\begin{cases}1,&amp;n=1\\(-1)^k,&amp;\text{若}n\text{无平方数因数，且}n=p_1p_2p_3…p_n\\0,&amp;\text{若}n\text{有大于}1\text{的平方数因数}\end{cases}$$</p>
+<p>同时，莫比乌斯函数是一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A9%8D%E6%80%A7%E5%87%BD%E6%95%B8">积性函数</a>。</p>
+<p>$$\sum\limits_{d|n}\mu(d)=\begin{cases}1,&amp;\text{若}n=1\\0,&amp;\text{其他情况}\end{cases}=[n=1]$$</p>
+<h3 id="莫比乌斯反演公式"><a href="#莫比乌斯反演公式" class="headerlink" title="莫比乌斯反演公式"></a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%BB%98%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%85%AC%E5%BC%8F">莫比乌斯反演公式</a></h3><p>假设对于数论函数$f(n)$和$F(n)$，有以下关系式：<br>$$F(n)=\sum\limits_{d|n}f(d)$$<br>则其莫比乌斯反演公式定义为：<br>$$f(n)=\sum\limits_{d|n}\mu(d)F(\frac{n}{d})$$<br>它还有第二种形式：<br>$$F(n)=\sum\limits_{n\mid d}f(d)\Rightarrow f(n)=\sum\limits_{n\mid d}\mu(\frac{d}{n})F(d)$$</p>
+<h3 id="杜教筛"><a href="#杜教筛" class="headerlink" title="杜教筛"></a>杜教筛</h3><p>杜教筛是用来简化求积性函数前缀和的一种方法，也用到了下面所说的黑科技。杜教筛不是本文的重点，所以就不多介绍了。（学习杜教筛可以到<a target="_blank" rel="noopener" href="https://blog.csdn.net/skywalkert/article/details/50500009">这篇博文</a>，非常详细）<del>主要是我不会讲。</del></p>
+<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p>莫比乌斯反演可以解决一类求和中含有求最大公因数（以下简称$\gcd$）的问题。<br>举一个稍简单的例子，让你求这样的一个式子：<br>$$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}\gcd(i,j)\text{ ①}$$<br>$1\le n\le10^{9}$。</p>
+<p>显然暴力不可行，那我们试试推导一番。</p>
+<h3 id="推导公式"><a href="#推导公式" class="headerlink" title="推导公式"></a>推导公式</h3><p>首先枚举所有$\gcd$得到的值：<br>$$\sum\limits_{d=1}^{n}d\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}[\gcd(i,j)=d]\text{ ②}$$</p>
+<p>我们知道，$\gcd(i,j)=d$时，$i$和$j$一定是$d$的倍数，那么我们在已知$d$的前提下，$i$和$j$都只需要枚举$d$的倍数即可，即上式可化为：</p>
+<p>$$\sum\limits_{d=1}^{n}d\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}\sum\limits_{j=1}^{\lfloor\frac{n}{d}\rfloor}[\gcd(i,j)=1]\text{ ③}$$</p>
+<p>显然右边的式子是比较整齐的，令$d$右边的求和式整理为一个函数：</p>
+<p>$$f(m,k)=\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}[\gcd(i,j)=k]\text{ ④}$$</p>
+<p>为什么要把③中的$\gcd(i,j)=1$中的$1$也变成一个变量处理呢？这是因为处理这个函数<strong>需要使用莫比乌斯反演公式</strong>，而把这个$1$作为变量更好理解。</p>
+<p>既然我们需要用莫比乌斯反演公式，那是否能找到一个函数使得：</p>
+<p>$$F(m,k)=\sum\limits_{k|l}f(m,l)\text{ ⑤}$$</p>
+<p><del>您好，有的。</del></p>
+<p>$$F(m,k)=\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{m}[\gcd(i,j)=k\text{的倍数}]=(\lfloor\frac{m}{k}\rfloor)^2\text{ ⑥}$$</p>
+<p><strong>这一步非常难以理解，请读者耐心思考。</strong></p>
+<blockquote>
+<p>第一个难以理解的点在于⑤式中如何求到所有的$l$能整数$k$。仔细分析就知道这个$l$有无穷个，但在无穷个合适的取值中大部分的$l$代入函数f中的值都为0。<br>第二个难以理解的点在于⑥式中为什么函数F是这样的真的会使得⑤式成立吗。因为所有$l$组成的集合就是所有$k$的倍数的集合。</p>
+</blockquote>
+<p>这个函数F的值是非常容易求的，那么得到函数F之后，那么就可以利用莫比乌斯反演公式迎刃而解了。</p>
+<p>$$\text{原式}=\sum\limits_{d=1}^{n}d\cdot f(\lfloor\frac{n}{d}\rfloor,1)=\sum\limits_{d=1}^{n}d\sum\limits_{1|i}\mu(i)F(\lfloor\frac{n}{d}\rfloor,i)$$</p>
+<p>$$=\sum\limits_{d=1}^{n}d\sum\limits_{i=1}^{\infty}\mu(i)F(\lfloor\frac{n}{d}\rfloor,i)=\sum\limits_{d=1}^{n}d\sum\limits_{i=1}^{\infty}\mu(i)(\lfloor\frac{\lfloor\frac{n}{d}\rfloor}{i}\rfloor)^2$$</p>
+<p>$$=\sum\limits_{d=1}^{n}d\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}\mu(i)(\lfloor\frac{\lfloor\frac{n}{d}\rfloor}{i}\rfloor)^2\text{ ⑦}$$</p>
+<h3 id="黑科技"><a href="#黑科技" class="headerlink" title="黑科技"></a>黑科技</h3><p>显然⑦式中$\sum\limits_{i=1}^{\lfloor\frac{n}{d}\rfloor}…$的部分只与$\lfloor\frac{n}{d}\rfloor$的值有关。<br>当$d\le\sqrt{n}$时，$\lfloor\frac{n}{d}\rfloor$显然只有$O(\sqrt{n})$个取值；当$d\gt n$时，$\lfloor\frac{n}{d}\rfloor\lt\sqrt{n}$显然也只有$O(\sqrt{n})$个取值；对于固定的$\lfloor\frac{n}{d}\rfloor$，$d$的取值是一段连续的区间，这段区间是$[\left\lfloor\frac{n}{\left\lfloor\frac{n}{d}\right\rfloor+1}\right\rfloor+1,\left\lfloor\frac{n}{\left\lfloor\frac{n}{d}\right\rfloor}\right\rfloor]$，因此可以$O(\sqrt{n})$计算所求。<br>即设$f(n,i)=\lfloor\frac{n}{i}\rfloor$，那么使得$f(n,i)=f(n,j)$的$j\in[\left\lfloor\frac{n}{\left\lfloor\frac{n}{i}\right\rfloor+1}\right\rfloor+1,\left\lfloor\frac{n}{\left\lfloor\frac{n}{i}\right\rfloor}\right\rfloor]$。<br>还有一种是向上取整的，即设$f(n,i)=\lceil\frac{n}{i}\rceil$，那么使得$f(n,i)=f(n,j)$的$j\in[\lceil\frac{n}{\lceil\frac{n}{i}\rceil}\rceil,\left\lceil\frac{n}{\left\lceil\frac{n}{i}\right\rceil-1}\right\rceil-1]$。（若$\lceil\frac{n}{i}\rceil=1$，上界为无穷大）</p>
+<p>那么上面的式子还有一个难点，就是求莫比乌斯函数的前缀和，用杜教筛就可以求出来。最终总的复杂度是$O(n^{\frac{3}{4}})$。如果$1\le n\le 10^{10}$，需要使用其他方法化简上面的式子变成欧拉函数前缀和同样也用杜教筛求。</p>
+<h2 id="做个小结"><a href="#做个小结" class="headerlink" title="做个小结"></a>做个小结</h2><p>通常情况下：<br>第一步都需要<strong>枚举所有可能的$\gcd$的值</strong>；<br>第二步化简成具有向上取整和向下取整的公式；<br>第三步利用莫比乌斯反演来使公式更容易求出；<br>第四步看是否能以及需要使用杜教筛来简化运算。</p>
+<p>可以说这种题目非常地套路了。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="ECNU3308-lcm-与-gcd-1"><a href="#ECNU3308-lcm-与-gcd-1" class="headerlink" title="ECNU3308 lcm 与 gcd (1)"></a><a target="_blank" rel="noopener" href="https://eoj.i64d.com/problem/3308/">ECNU3308 lcm 与 gcd (1)</a></h3><p>题意：给你下面的式子，让你去求它的值：</p>
+<p>$$\sum_{i=1}^n \sum_{j=1}^m \frac{\mathrm{lcm}(i,j)}{\gcd(i,j)} \bmod 1<del>000</del>000~007$$</p>
+<p>尝试着去推一下吧。<a href="https://conanyu.github.io/2019/03/13/ecnu-3308/">详细解析</a></p>
+<h3 id="牛牛的最大公约数"><a href="#牛牛的最大公约数" class="headerlink" title="牛牛的最大公约数"></a><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/problem/21546">牛牛的最大公约数</a></h3><p>题意：给你下面的式子，让你去求它的值：</p>
+<p>$$\sum\limits_{i_1=L}^{R}\sum\limits_{i_2=L}^{R}\sum\limits_{i_3=L}^{R}…\sum\limits_{i_N=L}^{R}[gcd(i_1,i_2,i_3,…,i_n)=K]$$</p>
+<p>化简：</p>
+<p>第二步：</p>
+<p>$$f(d)=\sum\limits_{i_1=\lceil\frac{L}{K}\rceil}^{\lfloor\frac{R}{K}\rfloor}\sum\limits_{i_2=\lceil\frac{L}{K}\rceil}^{\lfloor\frac{R}{K}\rfloor}…\sum\limits_{i_N=\lceil\frac{L}{K}\rceil}^{\lfloor\frac{R}{K}\rfloor}[gcd(i_1,i_2,…,i_N)=d]$$</p>
+<p>即答案为f(1)。</p>
+<p>第三步：</p>
+<p>$$F(d)=\sum\limits_{i_1=\lceil\frac{L}{K}\rceil}^{\lfloor\frac{R}{K}\rfloor}\sum\limits_{i_2=\lceil\frac{L}{K}\rceil}^{\lfloor\frac{R}{K}\rfloor}…\sum\limits_{i_N=\lceil\frac{L}{K}\rceil}^{\lfloor\frac{R}{K}\rfloor}[gcd(i_1,i_2,…,i_N)=d的倍数]=(\lfloor\frac{\lfloor\frac{R}{K}\rfloor-\lceil\frac{L}{K}\rceil+1}{d}\rfloor)^N$$</p>
+<p>则：</p>
+<p>$f(1)=\sum\limits_{d=1}^{\infty}\mu(i)\cdot(\lfloor\frac{\lfloor\frac{R}{K}\rfloor-\lceil\frac{L}{K}\rceil+1}{d}\rfloor)^N$</p>
+<p>然后就可以用黑科技来加速后面的运算以及，用杜教筛较快地求出莫比乌斯函数前缀和从而求出结果。（如果忘记了向上取整时是怎么运作的，点<a href="#%E9%BB%91%E7%A7%91%E6%8A%80">这里</a>）</p>
+<p>参考代码：<br>上文所说的黑科技的代码可以实现地很巧妙。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">fpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b, <span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> &amp;p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1l</span>l;</span><br><span class="line">    <span class="keyword">for</span> (a %= p; b; a = a * a % p, b &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) ans = ans * a % p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1e7</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">bool</span> isnpri[MAXN];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;pri;</span><br><span class="line"><span class="keyword">int</span> mu[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mobius</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; MAXN; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!isnpri[i]) &#123;</span><br><span class="line">            pri.push_back(i);</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="keyword">signed</span>(pri.size()); j++) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">int</span> cur = i * pri[j];</span><br><span class="line">            <span class="keyword">if</span>(cur &gt;= MAXN) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            isnpri[cur] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % pri[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                mu[cur] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                mu[cur] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; MAXN; i++) &#123;</span><br><span class="line">        mu[i] += mu[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pm</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; MAXN) &#123;</span><br><span class="line">        <span class="keyword">return</span> mu[x];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator it = mp.find(x);</span><br><span class="line">    <span class="keyword">if</span>(it != mp.end()) &#123;</span><br><span class="line">        <span class="keyword">return</span> it-&gt;second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>, j; i &lt;= x; i = j + <span class="number">1</span>) &#123;</span><br><span class="line">        j = x / (x / i);</span><br><span class="line">        ans = (((ans - <span class="number">1l</span>l * pm(x / i) * (j - i + <span class="number">1</span>)) % MOD) + MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    mp[x] = ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mobius();</span><br><span class="line">    <span class="keyword">int</span> n, k, l, r;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k &gt;&gt; l &gt;&gt; r;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> A = r / k, B = (l + k - <span class="number">1</span>) / k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> d = <span class="number">1</span>, p; d &lt;= A; d = p + <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> C = (B + d - <span class="number">1</span>) / d;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> D = C == <span class="number">1</span> ? INT_MAX : (B + C - <span class="number">2</span>) / (C - <span class="number">1</span>) - <span class="number">1</span>;</span><br><span class="line">        p = min(A / (A / d), D); <span class="comment">// 求最大的d使某部分相同，而另一部分通过求函数前缀和获得。</span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> cur = A / d - C + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(cur &lt;= <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">        ans = (((ans + fpow(cur, n, MOD) * (pm(p) - pm(d - <span class="number">1</span>))) % MOD) + MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/skywalkert/article/details/50500009">浅谈一类积性函数的前缀和 - CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%BB%98%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0">默比乌斯函数 - 维基百科</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%BB%98%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%85%AC%E5%BC%8F">默比乌斯反演公式 - 维基百科</a></li>
+</ul>
+<p>作者：ConanYu<br>原文地址：<a href="https://conanyu.github.io/2019/04/29/mobius/">https://conanyu.github.io/2019/04/29/mobius/</a></p>
+<p><a href="#">回到开头</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/number-theory/" rel="tag"># number theory</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/13/ecnu-3308/" rel="prev" title="ECNU3308 lcm 与 gcd (1)">
+      <i class="fa fa-chevron-left"></i> ECNU3308 lcm 与 gcd (1)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/06/08/june8/" rel="next" title="June 8th">
+      June 8th <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">基本内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">莫比乌斯函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E5%85%AC%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">莫比乌斯反演公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%9C%E6%95%99%E7%AD%9B"><span class="nav-number">1.3.</span> <span class="nav-text">杜教筛</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="nav-number">2.</span> <span class="nav-text">举个例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC%E5%85%AC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">推导公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%91%E7%A7%91%E6%8A%80"><span class="nav-number">2.2.</span> <span class="nav-text">黑科技</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A%E4%B8%AA%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">做个小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECNU3308-lcm-%E4%B8%8E-gcd-1"><span class="nav-number">4.1.</span> <span class="nav-text">ECNU3308 lcm 与 gcd (1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%9B%E7%89%9B%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">牛牛的最大公约数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://semon0x29a.cn/" title="http:&#x2F;&#x2F;semon0x29a.cn&#x2F;" rel="noopener" target="_blank">Semon0x29a</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://caproner.github.io/" title="https:&#x2F;&#x2F;caproner.github.io&#x2F;" rel="noopener" target="_blank">Caproner</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.qfstudio.net/" title="https:&#x2F;&#x2F;blog.qfstudio.net&#x2F;" rel="noopener" target="_blank">lightyears</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.dangosky.com/" title="http:&#x2F;&#x2F;blog.dangosky.com&#x2F;" rel="noopener" target="_blank">DangoSky</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://cppisgood.github.io/" title="https:&#x2F;&#x2F;cppisgood.github.io&#x2F;" rel="noopener" target="_blank">cppisgood</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://9lie.github.io/" title="https:&#x2F;&#x2F;9lie.github.io&#x2F;" rel="noopener" target="_blank">9lie</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v5.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
